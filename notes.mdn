@@ -1,0 +1,13 @@
+1. Make a startup screen that greets the user // maybe here we can get the users name 
+2. Allow for user to create or not create their todo
+3. Show in the welcome (Upcoming projects , show completed, reminders, notes)
+4. Allow user to create a todo (Name, description, due-date// including time of due, priority, save)
+5. Allow the user to store their todos in seperate projects or files
+
+
+For the projects Tab 
+
+addEventListener for when the button is pressed that opens up a dialog box
+in the dialog box is where the for would be located 
+
+Good luck
