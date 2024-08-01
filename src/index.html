@@ -14,7 +14,7 @@
     <div id="sidebar">
 
         <div id="userLocation">
-            Welcom User
+            Welcome User
         </div>
 
         <button id="addTask">Add Task</button>
@@ -24,19 +24,27 @@
         <button id="Completed">Completed</button>
 
         <div id="projects">
+
+        
             
-            <dialog id="hello">
-                <form>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" for="name" placeholder="Name">
-                </form>
-            </dialog>
 
         </div>
         <!-- Create projects here  -->
     </div>
 
-    <div id="display">Whats up</div>
+    <div id="display">
+        <dialog id="formResults">
+            <form onsubmit="return false">
+                <label for="Name-of-Project">Name of Project</label>
+                <input type="text" name="Name-of-Project" id="Name-of-Project" placeholder="Project Name">
+
+                <button type="button" id="close">Close</button>
+            </form>
+        </dialog>
+    </div>
+
+    <div id="postProject">
+    </div>
 
 
 </body>
