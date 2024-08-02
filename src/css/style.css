@@ -28,4 +28,89 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
+
+#projectSection {
+  height: 200px;
+  width: 200px;
+  border: 1px solid;
+  font-size: large;
+}
+
+#projectHeader{
+
+  margin: 20px;
+}
+
+#projects{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#forms{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 400px;
+  justify-content: space-evenly;
+}
+
+input{
+  display: flex;
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+input::placeholder{
+text-align: center;
+}
+
+
+#projectHeader, #Home{
+
+  display: flex;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+}
+
+#projectHeader:hover, #Home:hover{
+
+  color: red;
+}
+
+
+
+
+
+/* CSS */
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  color: #3D3D3D;
+  background: #fff;
+  border: 1px solid rgb(246, 195, 195);
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:focus {
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
 /* cool */
+
+/* Now you can start working with the UI */

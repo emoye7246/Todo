@@ -8,42 +8,71 @@
 <body>
 
     <div>
-    <h1 id="Welcome">Task</h1>
+    <h1 id="Welcome">Welcome User</h1>
     </div>
 
     <div id="sidebar">
 
         <div id="userLocation">
-            Welcome User
+            UserName
         </div>
 
+        <div id="Home">Home</div>
+
         <button id="addTask">Add Task</button>
-        <button id="addProject">Add Project</button>
         <button id="Today">Today</button>
         <button id="Upcoming">Upcoming</button>
         <button id="Completed">Completed</button>
 
         <div id="projects">
 
-        
-            
+
+            <div id="projectHeader">Projects</div>
+            <button id="addProject">Add Project</button>
+
 
         </div>
         <!-- Create projects here  -->
     </div>
 
-    <div id="display">
+    <div id="displayProjects">
         <dialog id="formResults">
-            <form onsubmit="return false">
+            <form onsubmit="return false" id="forms">
                 <label for="Name-of-Project">Name of Project</label>
                 <input type="text" name="Name-of-Project" id="Name-of-Project" placeholder="Project Name">
+
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" placeholder="Describe this Project">
 
                 <button type="button" id="close">Close</button>
             </form>
         </dialog>
     </div>
 
-    <div id="postProject">
+    <div id="displayTasks">
+        <dialog id="taskResult">
+
+            <form onsubmit="return false" id="forms">
+                <label for="Name-of-Task">Name of Task</label>
+                <input type="text" name="Name-of-Task" id="Name-of-Task" placeholder="Task Name">
+
+                <label for="Name-of-Task">Description</label>
+                <input type="text" name="description" id="description" placeholder="Describe this Task">
+
+                <button type="button" id="closes">Close</button>
+            </form>
+
+
+        </dialog>
+    </div>
+
+    <!-- We will just use this dialog section to control all user inputs -->
+
+    <div id="postProject" style="display: none;">
+    </div>
+
+    <div id="postTasks" style="display: none;">
+
     </div>
 
 
