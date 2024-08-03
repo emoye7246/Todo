@@ -1,33 +1,23 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
-import projectManager from './java/project';
-import { createTask } from './java/task';
+import { Projects } from './java/project';
 
-let postTasks = document.getElementById('postTasks')
-let postProject = document.getElementById('postProject')
-
-
-
+let dialog = document.querySelector('dialog')
 let addProject = document.getElementById('addProject')
-addProject.addEventListener('click', projectManager)
+let close = document.getElementById('close')
 
-let addTask = document.getElementById('addTask')
-addTask.addEventListener('click', createTask)
 
-let projectHeader = document.getElementById('projectHeader')
-projectHeader.addEventListener('click', () => {
 
-    postTasks.style.display = 'none'
-    
-    postProject.style.display = 'inline'
+addProject.addEventListener('click', () => {
+
+    dialog.showModal();
 })
 
-let Home = document.getElementById('Home')
-
-Home.addEventListener('click', () => {
-
-    postProject.style.display = 'none'
-
-    postTasks.style.display = 'inline'
-
+close.addEventListener('click', () => {
+    let name = document.getElementById('Name-of-Project').value
+    let projectInfo = document.getElementById('description').value
+    let userInput = new Projects(name, projectInfo)
+    userInput.displayProjects()
+    dialog.close()
 })
+

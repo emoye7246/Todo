@@ -37,7 +37,7 @@
 
     <div id="displayProjects">
         <dialog id="formResults">
-            <form onsubmit="return false" id="forms">
+            <form id="forms">
                 <label for="Name-of-Project">Name of Project</label>
                 <input type="text" name="Name-of-Project" id="Name-of-Project" placeholder="Project Name">
 
@@ -49,26 +49,9 @@
         </dialog>
     </div>
 
-    <div id="displayTasks">
-        <dialog id="taskResult">
-
-            <form onsubmit="return false" id="forms">
-                <label for="Name-of-Task">Name of Task</label>
-                <input type="text" name="Name-of-Task" id="Name-of-Task" placeholder="Task Name">
-
-                <label for="Name-of-Task">Description</label>
-                <input type="text" name="description" id="description" placeholder="Describe this Task">
-
-                <button type="button" id="closes">Close</button>
-            </form>
-
-
-        </dialog>
-    </div>
-
     <!-- We will just use this dialog section to control all user inputs -->
 
-    <div id="postProject" style="display: none;">
+    <div id="postProject">
     </div>
 
     <div id="postTasks" style="display: none;">

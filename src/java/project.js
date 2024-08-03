@@ -1,37 +1,33 @@
-export default function projectManager(){
+export class Projects {
 
-    let welcome = document.getElementById('Welcome')
-    let formResults = document.getElementById('formResults')
-    let Close = document.getElementById('close')
-    let postProject = document.getElementById('postProject')
-    let projectSection = document.createElement('div')
-    projectSection.id = 'projectSection'
+    constructor(title, description){
 
+        this.title = title,
+        this.description = description
+    }
 
-    welcome.innerHTML = 'Projects'
+    displayProjects(){
+        
+        let postProject = document.getElementById('postProject')
 
+        let create = document.createElement('div')
+        create.id = 'create'
 
-    let postTasks = document.getElementById('postTasks')
-    postTasks.style.display = 'none'
+        let createTitle = document.createElement('div')
+        let createDescription = document.createElement('div')
 
-    formResults.showModal()
+        createTitle.innerHTML = `${this.title}`
+        createDescription.innerHTML = `${this.description}`
 
-
-    Close.addEventListener('click', () => {
-
-        let projectName = document.getElementById('Name-of-Project').value
-
-        projectSection.innerHTML = `${projectName}`
-
-        postProject.appendChild(projectSection)
-
-        postProject.style.display = 'inline'
+        postProject.appendChild(create)
+        create.appendChild(createTitle)
+        create.appendChild(createDescription)
 
 
 
-        formResults.close()
 
-    })
+    }
+
 
 }
 
