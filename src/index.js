@@ -4,6 +4,19 @@ import { DialogControl } from './java/dialogs';
 
 let dialog = document.getElementById('formResults')
 let addProject = document.getElementById('addProject')
+let addTask = document.getElementById('addTask')
+
+addTask.addEventListener('click', () => {
+
+    dialog.showModal()
+
+    let userInput = new DialogControl
+    userInput.showTasks();
+
+
+})
+
+
 
 addProject.addEventListener('click', () => {
     dialog.showModal();
@@ -13,3 +26,5 @@ addProject.addEventListener('click', () => {
 
 })
 
+
+// This goal now is to create the postTasks and PostProjects in javascript rather than in the dom so Great

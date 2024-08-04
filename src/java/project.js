@@ -53,6 +53,25 @@ export class Projects {
 
     displayTask (){
         
+    
+    let Welcome = document.getElementById('Welcome')
+    Welcome.innerHTML = 'Your Tasks'
+
+    let task = document.getElementById('postTasks')
+    task.innerHTML = ' '
+
+    let taskTitle = document.createElement('div')
+    taskTitle.innerHTML = `${this.title}`
+
+    task.appendChild(taskTitle)
+
+
+
+
+    
+    
+
+
     }
 
 }
