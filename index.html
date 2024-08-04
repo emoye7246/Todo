@@ -39,14 +39,8 @@
 
     <div id="displayProjects">
         <dialog id="formResults">
-            <form id="forms">
-                <label for="Name-of-Project">Name of Project</label>
-                <input type="text" name="Name-of-Project" id="Name-of-Project" placeholder="Project Name">
+            <form onsubmit="return false" id="forms">
 
-                <label for="description">Description</label>
-                <input type="text" name="description" id="description" placeholder="Describe this Project">
-
-                <button type="button" id="close">Close</button>
             </form>
         </dialog>
     </div>
@@ -59,6 +53,7 @@
     <div id="postTasks" style="display: none;">
 
     </div>
+
 
 
 <script defer src="main.js"></script></body>
