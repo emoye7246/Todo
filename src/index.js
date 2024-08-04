@@ -1,22 +1,15 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
-import { Projects } from './java/project';
+import { DialogControl } from './java/dialogs';
 
-let dialog = document.querySelector('dialog')
+let dialog = document.getElementById('formResults')
 let addProject = document.getElementById('addProject')
-let close = document.getElementById('close')
-
-
 
 addProject.addEventListener('click', () => {
-
     dialog.showModal();
-})
+    
+    let userInput = new DialogControl
+    userInput.showProject()
 
-close.addEventListener('click', () => {
-    let name = document.getElementById('Name-of-Project').value
-    let userInput = new Projects(name)
-    userInput.displayProjects()
-    dialog.close()
 })
 

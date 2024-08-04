@@ -14,3 +14,5 @@ in the dialog box is where the for would be located
 Task Section
 Project Section can work as too seperate apps
 Good luck
+
+The createTitles and displayTitles have to be two seperate variables but can hold the same type of values

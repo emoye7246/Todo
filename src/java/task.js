@@ -1,6 +1,14 @@
 export function createTask(){
 
-    let welcome = document.getElementById('Welcome')
+    let create = document.createElement('dialog')
 
-    welcome.innerHTML = 'Task'
+    create.close()
+
+
+    let p = document.createElement('p')
+    p.innerHTML = 'Sofu'
+    create.showModal()
+
+    create.appendChild(p)
+
 }
