@@ -15,8 +15,7 @@ addProject.addEventListener('click', () => {
 
 close.addEventListener('click', () => {
     let name = document.getElementById('Name-of-Project').value
-    let projectInfo = document.getElementById('description').value
-    let userInput = new Projects(name, projectInfo)
+    let userInput = new Projects(name)
     userInput.displayProjects()
     dialog.close()
 })

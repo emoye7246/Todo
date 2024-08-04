@@ -8,20 +8,17 @@ export class Projects {
 
     displayProjects(){
         
-        let postProject = document.getElementById('postProject')
+        let project = document.getElementById('projects')
 
         let create = document.createElement('div')
         create.id = 'create'
 
         let createTitle = document.createElement('div')
-        let createDescription = document.createElement('div')
 
         createTitle.innerHTML = `${this.title}`
-        createDescription.innerHTML = `${this.description}`
 
-        postProject.appendChild(create)
+        project.appendChild(create)
         create.appendChild(createTitle)
-        create.appendChild(createDescription)
 
 
 
