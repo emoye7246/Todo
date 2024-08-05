@@ -85,6 +85,14 @@ input::placeholder{
 text-align: center;
 }
 
+#see{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
 #Home {
   display: flex;
   font-size: 20px;

@@ -25,6 +25,7 @@ export class Projects {
 
             let welcome = document.getElementById('Welcome')
             welcome.innerHTML = 'Your Projects'
+            
 
             let yourProject = document.createElement('div')
             yourProject.id = 'yourProject'
@@ -34,7 +35,11 @@ export class Projects {
 
 
             let postProject = document.getElementById('postProject')
+            postProject.style.display = 'flex'
             postProject.innerHTML = ' '
+
+            let postTasks = document.getElementById('postTasks')
+            postTasks.style.display = 'none'
 
             postProject.appendChild(yourProject)
             yourProject.appendChild(createPageTitle)
@@ -62,6 +67,12 @@ export class Projects {
 
     let taskTitle = document.createElement('div')
     taskTitle.innerHTML = `${this.title}`
+
+    let postTasks = document.getElementById('postTasks')
+    postTasks.style.display = 'flex'
+
+    let postProject = document.getElementById('postProject')
+    postProject.style.display = 'none'
 
     task.appendChild(taskTitle)
 
