@@ -69,7 +69,7 @@ export class DialogControl {
     let labelName = document.createElement('label')
 
     labelName.htmlFor = 'Name-of-Project'
-    labelName.innerHTML = 'Name of Project'
+    labelName.innerHTML = 'Name of Tasks'
 
     let inputName = document.createElement('input')
 
@@ -92,6 +92,16 @@ export class DialogControl {
     inputInfo.id = 'description'
     inputInfo.placeholder = 'Describe This Project'
 
+    let inputDate = document.createElement('label')
+    inputDate.htmlFor = 'date'
+    inputDate.innerHTML = 'Due Date'
+
+    let dateInput = document.createElement('input')
+    dateInput.type = 'date'
+    dateInput.name = 'date'
+    dateInput.id = 'date'
+
+
 
     let button = document.createElement('button')
 
@@ -102,7 +112,9 @@ export class DialogControl {
 
     button.addEventListener('click', () => {
         let name = document.getElementById('Name-of-Project').value
-        let userInput = new Projects(name)
+        let inputInfo = document.getElementById('description').value
+        let dateInput = document.getElementById('date').value
+        let userInput = new Projects(name, inputInfo, dateInput)
         userInput.displayTask()
         dialog.close()
     })
@@ -111,6 +123,8 @@ export class DialogControl {
     form.appendChild(inputName)
     form.appendChild(labelInfo)
     form.appendChild(inputInfo)
+    form.appendChild(inputDate)
+    form.appendChild(dateInput)
     form.appendChild(button)
 
   }
