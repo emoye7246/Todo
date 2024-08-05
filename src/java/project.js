@@ -63,9 +63,9 @@ export class Projects {
     Welcome.innerHTML = 'Your Tasks'
 
     let task = document.getElementById('postTasks')
-    task.innerHTML = ' '
 
     let taskTitle = document.createElement('div')
+    taskTitle.id = 'taskTitle'
     taskTitle.innerHTML = `${this.title}`
 
     let postTasks = document.getElementById('postTasks')
@@ -75,13 +75,6 @@ export class Projects {
     postProject.style.display = 'none'
 
     task.appendChild(taskTitle)
-
-
-
-
-    
-    
-
 
     }
 
