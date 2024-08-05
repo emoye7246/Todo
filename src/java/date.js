@@ -11,3 +11,5 @@ export function dateControl(){
 
     console.log(see)
 }
+
+// Go work on some c# man come back later 

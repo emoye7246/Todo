@@ -39,7 +39,7 @@ body{
 #malcolm {
   display: flex;
   flex-direction: column;
-  height: 250px;
+  height: 500px;
   justify-content: space-between;
   flex-shrink: 0;
 }
