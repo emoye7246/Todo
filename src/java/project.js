@@ -82,7 +82,7 @@ export class Projects {
     taskDescription.innerHTML = `${this.description}`
 
     let taskDate = document.createElement('div')
-    taskDate.innerHTML = `${this.date}`
+    taskDate.innerHTML = `This Task is due on ${this.date}`
 
     let postTasks = document.getElementById('postTasks')
     postTasks.style.display = 'flex'

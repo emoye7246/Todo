@@ -1,4 +1,5 @@
 import { Projects } from "./project"
+import { format } from "date-fns"
 
 export class DialogControl {
 
@@ -114,7 +115,9 @@ export class DialogControl {
         let name = document.getElementById('Name-of-Project').value
         let inputInfo = document.getElementById('description').value
         let dateInput = document.getElementById('date').value
-        let userInput = new Projects(name, inputInfo, dateInput)
+        let UserDate = new Date(dateInput)
+        let formatDate = format(new Date(UserDate), 'MM/dd/yyyy')
+        let userInput = new Projects(name, inputInfo, formatDate)
         userInput.displayTask()
         dialog.close()
     })

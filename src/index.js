@@ -1,17 +1,30 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import { DialogControl } from './java/dialogs';
+import { dateControl } from './java/date';
+import {addDays} from "date-fns"
+
 
 let dialog = document.getElementById('formResults')
 let addProject = document.getElementById('addProject')
 let addTask = document.getElementById('addTask')
 let welcome = document.getElementById('Welcome')
+let today = document.getElementById('Today')
 
 
 let Home = document.getElementById('Home')
 let postProject = document.getElementById('postProject')
 let postTasks = document.getElementById('postTasks')
 let project = document.getElementById('projects')
+
+today.addEventListener('click', () => {
+
+
+dateControl()
+
+    // Work With This
+
+})
 
 Home.addEventListener('click', () => {
 
