@@ -4,7 +4,6 @@ import { DialogControl } from './java/dialogs';
 import { dateControl } from './java/date';
 import {addDays} from "date-fns"
 
-
 let dialog = document.getElementById('formResults')
 let addProject = document.getElementById('addProject')
 let addTask = document.getElementById('addTask')
@@ -48,6 +47,8 @@ addTask.addEventListener('click', () => {
 
     let userInput = new DialogControl
     userInput.showTasks();
+
+    
 
 
 })

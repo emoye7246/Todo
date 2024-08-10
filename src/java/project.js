@@ -1,3 +1,6 @@
+import { boardControl, editTasks } from "./boardControl"
+
+
 export class Projects {
 
     constructor(title, description, date){
@@ -52,7 +55,7 @@ export class Projects {
             yourProject.appendChild(createPageDescription)
  
           
-        
+            // This controls display of task of course 
             // yourProject.appendChild(createDescription)
         })
 
@@ -60,6 +63,9 @@ export class Projects {
 
         project.appendChild(create)
         create.appendChild(createTitle)
+
+        // This controls side bar of projects
+        // I know this is considered bad code but its mine 
 
     }
 
@@ -71,6 +77,9 @@ export class Projects {
 
     let task = document.getElementById('postTasks')
 
+    let empty = document.getElementById('empty')
+    empty.style.display = 'none'
+
     let placement = document.createElement('div')
     placement.id = 'placement'
 
@@ -80,23 +89,62 @@ export class Projects {
 
     let taskDescription = document.createElement('div')
     taskDescription.innerHTML = `${this.description}`
+    taskDescription.id = 'taskDescription'
+    
 
-    let taskDate = document.createElement('div')
+    let taskDate = document.createElement('button')
     taskDate.innerHTML = `This Task is due on ${this.date}`
+    taskDate.id = 'taskDate'
+
+    let editMenu = document.createElement('button')
+
+    editMenu.id = 'editMenu'
+    editMenu.innerHTML = 'Edit'
+
+    editMenu.addEventListener('click', () => {
+       editTasks()
+    })
+
+    let addto = document.createElement('button')
+    addto.type = 'button'
+    addto.id = 'addTo'
+    addto.innerHTML = 'Add to Project'
+
+    addto.addEventListener('click', () => {
+        console.log('hello')
+    })
+
+    let removeButton = document.createElement('button')
+    
+
+    removeButton.id = 'removeButton'
+    removeButton.type = 'button'
+    removeButton.innerHTML = 'Remove'
+
+    removeButton.addEventListener('click', () => {
+
+        boardControl()
+
+    })
 
     let postTasks = document.getElementById('postTasks')
     postTasks.style.display = 'flex'
 
     let postProject = document.getElementById('postProject')
     postProject.style.display = 'none'
+    
 
 
     task.appendChild(placement)
     placement.appendChild(taskTitle)
     placement.appendChild(taskDescription)
     placement.appendChild(taskDate)
+    placement.appendChild(editMenu)
+    placement.appendChild(addto)
+    placement.appendChild(removeButton)
 
     }
+
 
 }
 

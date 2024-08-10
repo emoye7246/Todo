@@ -1,6 +1,6 @@
 import { Projects } from "./project"
 import { format } from "date-fns"
-
+import { editTasks } from "./boardControl"
 export class DialogControl {
 
   showProject(){
@@ -24,7 +24,7 @@ export class DialogControl {
 
     let labelInfo = document.createElement('label')
 
-    labelInfo.htmlFor = 'description'
+    labelInfo.htmlFor = 'descriptions'
     labelInfo.innerHTML = 'Description'
 
 
@@ -32,7 +32,7 @@ export class DialogControl {
 
     inputInfo.type = 'text'
     inputInfo.name = 'description'
-    inputInfo.id = 'description'
+    inputInfo.id = 'descriptions'
     inputInfo.placeholder = 'Describe This Project'
 
 
@@ -41,11 +41,13 @@ export class DialogControl {
     button.type = button
     button.id = 'close'
     button.innerHTML = 'Close'
+    
 
 
     button.addEventListener('click', () => {
         let name = document.getElementById('Name-of-Project').value
-        let userInput = new Projects(name)
+        let description = document.getElementById('descriptions').value
+        let userInput = new Projects(name, description)
         userInput.displayProjects()
         dialog.close()
     })
@@ -119,7 +121,7 @@ export class DialogControl {
         let formatDate = format(new Date(UserDate), 'MM/dd/yyyy')
         let userInput = new Projects(name, inputInfo, formatDate)
         userInput.displayTask()
-        dialog.close()
+        dialog.close() 
     })
 
     form.appendChild(labelName)
@@ -131,10 +133,5 @@ export class DialogControl {
     form.appendChild(button)
 
   }
-
-
-
-
-
 
 }

@@ -87,22 +87,21 @@ text-align: center;
 
 #postTasks {
 
-  display: flex;
   flex-direction: column;
-  height: 250px;
   width: 250px;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
 #placement{
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 300px;
   justify-content: space-between;
   border: 1px solid black;
-  width: 200px;
+  width: 300px;
   align-items: center;
+  margin: 20px;
 }
 
 
@@ -137,13 +136,10 @@ text-align: center;
 
 #postProject {
 
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-around;
+  align-items: center;
 }
 
 #create{
