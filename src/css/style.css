@@ -44,12 +44,7 @@ body{
   flex-shrink: 0;
 }
 
-#projectSection {
-  height: 200px;
-  width: 200px;
-  border: 1px solid;
-  font-size: large;
-}
+
 
 #projectHeader{
 
@@ -85,25 +80,6 @@ input::placeholder{
 text-align: center;
 }
 
-#postTasks {
-
-  display: flex;
-  flex-direction: column;
-  height: 250px;
-  width: 250px;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-#placement{
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  justify-content: space-between;
-  border: 1px solid black;
-  width: 200px;
-  align-items: center;
-}
 
 
 #Home {
@@ -146,24 +122,6 @@ text-align: center;
   justify-content: space-around;
 }
 
-#create{
-
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
-  cursor: pointer;
-
-}
-
-#create:hover {
-  color: red;
-}
-
 
 
 
@@ -184,10 +142,6 @@ button {
   touch-action: manipulation;
 }
 
-#addProject {
-
-  margin-bottom: 10px;
-}
 
 button:focus {
   box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
