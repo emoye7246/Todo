@@ -122,6 +122,14 @@ text-align: center;
   justify-content: space-around;
 }
 
+#postTasks{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  width: 400px;
+  align-items: center;
+}
 
 
 

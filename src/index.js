@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import { dateControl } from './java/date';
+import { Dialogs } from './java/dialogs';
 
+let dialog = document.getElementById('formResults')
 let welcome = document.getElementById('Welcome')
 let today = document.getElementById('Today')
+
 
 
 let Home = document.getElementById('Home')
@@ -34,6 +37,28 @@ project.addEventListener('click', () => {
 
     postTasks.style.display = 'none'
     postProject.style.display = 'flex'
+})
+
+let addTasks = document.getElementById('addTask')
+
+addTasks.addEventListener('click', () => {
+
+    let Welcome = document.getElementById('Welcome')
+    Welcome.innerHTML = 'Your Tasks'
+
+    let postTasks = document.getElementById('postTasks')
+    let postProject = document.getElementById('postProject')
+
+
+    postTasks.style.display = 'flex'
+    postProject.style.display = 'none'
+
+
+    dialog.showModal()
+    
+    let showModals = new Dialogs(postTasks)
+    showModals.displayDialog()
+
 })
 
 
