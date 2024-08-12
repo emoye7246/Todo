@@ -5,8 +5,3 @@ export function boardControl() {
     // Wow Lmfao
 }
 
-export function editTasks(){
-   let taskTitle = document.getElementById('taskTitle')
-
-   taskTitle.contentEditable = 'true'
-}

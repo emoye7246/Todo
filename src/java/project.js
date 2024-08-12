@@ -1,4 +1,5 @@
 import { boardControl, editTasks } from "./boardControl"
+import { format } from "date-fns"
 
 
 export class Projects {
@@ -95,6 +96,7 @@ export class Projects {
     let taskDate = document.createElement('button')
     taskDate.innerHTML = `This Task is due on ${this.date}`
     taskDate.id = 'taskDate'
+    
 
     let editMenu = document.createElement('button')
 
@@ -102,7 +104,8 @@ export class Projects {
     editMenu.innerHTML = 'Edit'
 
     editMenu.addEventListener('click', () => {
-       editTasks()
+        taskTitle.contentEditable = 'true'
+        taskDescription.contentEditable = 'true'
     })
 
     let addto = document.createElement('button')
