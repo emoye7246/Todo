@@ -1,6 +1,8 @@
 export function Dialogs(section){
 
- this.section = section
+  this.section = section
+
+  
 
   this.displayDialog = function(){
 
@@ -16,13 +18,15 @@ export function Dialogs(section){
 
     let inputTitle = document.createElement('input')
     inputTitle.id = 'createTitle'
+    
 
     let createDescription = document.createElement('label')
-    createDescription.htmlFor = 'createDescription'
+    createDescription.htmlFor = 'description'
     createDescription.innerHTML = 'Description'
 
     let descriptionInput = document.createElement('input')
     descriptionInput.id = 'description'
+
 
     let createDate = document.createElement('label')
     createDate.htmlFor = 'createDate'
@@ -37,13 +41,20 @@ export function Dialogs(section){
 
     closeButton.addEventListener('click', () => {
 
-      let placement = document.createElement('div')
-      let titles = document.createElement('div')
-      titles.innerHTML = inputTitle.value
+      let holder = document.createElement('div')
+      holder.id = 'holder'
 
-      
-      section.appendChild(placement)
-      placement.appendChild(titles)
+      let sectionName = document.createElement('div')
+      sectionName.id = 'sectionName'
+      sectionName.innerHTML = `${inputTitle.value}`
+
+      let sectionDescription = document.createElement('div')
+      sectionDescription.innerHTML = `${descriptionInput.value}`
+
+      section.appendChild(holder)
+      holder.appendChild(sectionName)
+      holder.appendChild(sectionDescription)
+
       dialog.close()
     })
 
@@ -55,6 +66,7 @@ export function Dialogs(section){
     form.appendChild(createDate)
     form.appendChild(dateInput)
     form.appendChild(closeButton)
+
 
     
   }
