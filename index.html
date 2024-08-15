@@ -35,18 +35,7 @@
 
         </div>
         <!-- Create projects here  -->
-    </div>
-
-    <div id="displayProjects">
-        <dialog id="formResults">
-            <form onsubmit="return false" id="forms">
-
-            </form>
-        </dialog>
-    </div>
-
-    <!-- We will just use this dialog section to control all user inputs -->
-     
+    </div>     
 
     <div id="postProject" style="display: none;">
         
@@ -55,8 +44,49 @@
     <div id="postTasks" style="display: none;">
 
     </div>
+    
 
+    <dialog id="taskDialog">
 
+        <form onsubmit="false">
+            <h3>Create A Task</h3>
+
+            <label for="taskName">Name This Task</label>
+            <input type="text" id="taskName" placeholder="Walk My Dog">
+
+            <label for="taskDescription">Description</label>
+            <input type="text" id="taskDescription" placeholder="Walk 5 miles">
+
+            <label for="taskDate">Choose a due date</label>
+            <input type="date" id="taskDate">
+
+            <button type="taskButton" id="closeTask">Close</button>
+
+        </form>
+
+    </dialog>
+    
+    <dialog id="projectDialog">
+
+    <form onsubmit="false">
+        <h3>Create A Project</h3>
+
+        <label for="projectName">Name This Project</label>
+        <input type="text" id="projectName" placeholder="Workout">
+
+        <label for="projectDescription">Description</label>
+        <input type="text" id="projectDescription" placeholder="Lift some weights">
+
+        <button type="button" id="closeProject">Close</button>
+
+    </form>
+    </dialog>
+
+    
+
+    <dialog id="editTasks">
+
+    </dialog>
 
 <script defer src="main.js"></script></body>
 </html>
