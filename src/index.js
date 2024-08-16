@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
-
+import { TaskContol } from './java/taskManager';
 
 // Button Control
 
 let addTask = document.getElementById('addTask')
-let closeTask = document.getElementById('closeTask')
+
 
 let addProject = document.getElementById('addProject')
 let closeProject = document.getElementById('closeProject')
@@ -13,17 +13,13 @@ let closeProject = document.getElementById('closeProject')
 
 // Dialog Control
 
-let taskDialog = document.getElementById('taskDialog')
 
 let projectDialog = document.getElementById('projectDialog')
 
 addTask.addEventListener('click', () => {
-    taskDialog.showModal()
-
-})
-
-closeTask.addEventListener('click', () => {
-    taskDialog.close()
+    let collect = new TaskContol
+    collect.taskDialogs()
+    collect.taskContent()
 })
 
 

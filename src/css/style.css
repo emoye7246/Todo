@@ -60,7 +60,7 @@ body{
   min-height: auto;
 }
 
-form {
+#taskForms, #projectForms {
 
   display: flex;
   align-items: center;

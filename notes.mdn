@@ -16,3 +16,82 @@ Project Section can work as too seperate apps
 Good luck
 
 The createTitles and displayTitles have to be two seperate variables but can hold the same type of values
+
+
+
+export function taskControl(taskName, taskDescription, taskDate){
+
+    let Welcome = document.getElementById('Welcome')
+    Welcome.innerHTML = 'Your Tasks'
+
+    let postTasks = document.getElementById('postTasks')
+    let PostProject = document.getElementById('postProject')
+
+
+    let taskDialog = document.getElementById('taskDialog')
+    let closeTask = document.getElementById('closeTask')
+
+
+    postTasks.style.display = 'flex'
+    PostProject.style.display = 'none'
+
+    this.taskName = taskName,
+    this.taskDescription = taskDescription,
+    this.taskDate  = taskDate
+
+
+
+
+    taskName = document.getElementById('taskName').value
+    taskDescription = document.getElementById('taskDescription').value
+    taskDate = document.getElementById('taskDate').value
+
+
+
+    taskDialog.showModal()
+
+
+
+    let placeTask = document.createElement('div')
+
+    let nameInput = document.createElement('div')
+    nameInput.innerHTML = `${taskName}`
+
+    let descriptionInput = document.createElement('div')
+    descriptionInput.innerHTML = `${taskDescription}`
+
+    let dateInput = document.createElement('div')
+    dateInput.innerHTML = `${taskDate}`
+
+
+
+    this.displayTask = function(){
+
+        postTasks.appendChild(placeTask)
+        placeTask.appendChild(nameInput)
+        placeTask.appendChild(descriptionInput)
+        placeTask.appendChild(dateInput)
+
+    }
+
+
+    
+    let show = new taskControl(taskName, taskDescription, taskDate)
+
+    show.displayTask()
+
+    closeTask.addEventListener('click', () => {
+
+
+
+        taskDialog.close()
+    })
+    
+
+
+
+
+
+
+    
+}
