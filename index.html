@@ -48,19 +48,7 @@
 
     <dialog id="taskDialog">
 
-        <form onsubmit="false">
-            <h3>Create A Task</h3>
-
-            <label for="taskName">Name This Task</label>
-            <input type="text" id="taskName" placeholder="Walk My Dog">
-
-            <label for="taskDescription">Description</label>
-            <input type="text" id="taskDescription" placeholder="Walk 5 miles">
-
-            <label for="taskDate">Choose a due date</label>
-            <input type="date" id="taskDate">
-
-            <button type="taskButton" id="closeTask">Close</button>
+        <form onsubmit=" return false" id="taskForms">
 
         </form>
 
@@ -68,7 +56,7 @@
     
     <dialog id="projectDialog">
 
-    <form onsubmit="false">
+    <form onsubmit=" return false" id="projectForms">
         <h3>Create A Project</h3>
 
         <label for="projectName">Name This Project</label>
