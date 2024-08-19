@@ -48,7 +48,7 @@ export function projectManager(){
 
       projectDialog.close()
    })
-   // ON
+   // ONclikc display the project along with the descriprion to the page 
 
    projectForms.append(createHeader, nameProject, nameProjectInput, projectDescription, projectDescriptionInput, closeProjectDialog)
 
