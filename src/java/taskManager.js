@@ -1,5 +1,3 @@
-import { detectSeries } from "neo-async"
-import { changesValues } from "./changeButtons"
 
 export class TaskContol {
 
