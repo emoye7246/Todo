@@ -1,3 +1,6 @@
+import { detectSeries } from "neo-async"
+import { changesValues } from "./changeButtons"
+
 export class TaskContol {
 
     constructor(titles, descriptions, dates){
@@ -7,9 +10,7 @@ export class TaskContol {
         
     }
 
-    
-
-    taskDialogs(){
+   static taskDialogs(){
 
         let Welcome = document.getElementById('Welcome')
         Welcome.innerHTML = 'Your Tasks'
@@ -20,13 +21,18 @@ export class TaskContol {
 
         taskDialog.showModal()
 
+        let header = document.createElement('h1')
+        header.innerHTML = 'Create Your Tasks'
+
 
         let taskName = document.createElement('label')
         taskName.innerHTML = 'Task Name'
+        taskName.className = 'taskName'
         taskName.htmlFor = 'taskName'
 
         let nameInput = document.createElement('input')
         nameInput.id = 'taskName'
+
         nameInput.placeholder = 'Walk my Dog'
 
         let taskDescription = document.createElement('label')
@@ -46,28 +52,104 @@ export class TaskContol {
         dateInput.type = 'date'
         dateInput.id = 'taskDate'
 
-
-
-
-        taskForms.append(taskName, nameInput, taskDescription, descriptionInput, taskDate, dateInput)
-    }
-
-    taskContent(){
-        let taskDialog = document.getElementById('taskDialog')
-        let taskForms = document.getElementById('taskForms')
-
-
-
         let button = document.createElement('button')
         button.type = 'button'
-        button.innerHTML = 'close'
-        
+        button.innerHTML = 'Close'
+
+        // Everything Displays
+
         button.addEventListener('click', () => {
+
+            let postTasks = document.getElementById('postTasks')
+            let postProject = document.getElementById('postProject')
+
+            postTasks.style.display = 'flex'
+            postProject.style.display = 'none'
+
+            // Top section
+
+            let placeCard = document.createElement('div')
+            placeCard.id = 'placeCard'
+
+            let taskTitle = document.createElement('div')
+            taskTitle.id = 'taskTitles'
+            taskTitle.innerHTML = `${nameInput.value}`
+
+
+            let taskInfo = document.createElement('div')
+            taskInfo.id = 'taskInfo'
+            taskInfo.innerHTML = `${descriptionInput.value}`
+
+            let taskDates = document.createElement('div')
+            taskDates.id = 'taskDates'
+            taskDates.innerHTML = `${dateInput.value}`
+            // Mid Section
+            let changes = document.createElement('div')
+            changes.id = 'changes'
+        
+            let editButton = document.createElement('button')
+            editButton.innerHTML = 'Edit'
+            editButton.addEventListener('click', () => {
+
+                let editTasks = document.getElementById('editTasks')
+                editTasks.showModal()
+
+                editTasks.innerHTML = ' '
+
+                let closeEdit = document.createElement('button')
+                closeEdit.innerHTML = 'Close edit'
+                closeEdit.addEventListener('click', () => {
+
+                    
+                   let taskTitleEdit = taskTitle
+                   taskTitleEdit.innerHTML = `${nameInput.value}`
+
+                    let taskInfoEdit = taskInfo
+                    taskInfoEdit.innerHTML = `${descriptionInput.value}`
+
+                    let taskDateInfo = taskDates
+                    taskDateInfo.innerHTML = `${dateInput.value}`
+
+                    
+                    editTasks.close()
+                })
+
+                // Renaming gives you more clarity then getting Element by Id
+
+                editTasks.append(header, taskName, nameInput, taskDescription, descriptionInput, taskDate, dateInput, closeEdit)
+
+
+
+
+
+
+            })
+
+
+
+            let addTo = document.createElement('button')
+            addTo.innerHTML = 'Add to Project'
+            addTo.className = 'addTo'
+
+
+            let removeButton = document.createElement('button')
+            removeButton.className = 'removeButton'
+            removeButton.innerHTML = 'Remove'
+
+            removeButton.addEventListener('click', () => {
+                let placeCardRemove = placeCard
+                placeCardRemove.remove()
+            })
+
+           
+            postTasks.appendChild(placeCard)
+            changes.append(editButton, addTo, removeButton)
+            placeCard.append(taskTitle, taskInfo, taskDates, changes)
+
             taskDialog.close()
         })
 
-        taskForms.append(button)
+        taskForms.append(header, taskName, nameInput, taskDescription, descriptionInput, taskDate, dateInput, button)
         
-
     }
 }

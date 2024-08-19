@@ -17,9 +17,8 @@ let closeProject = document.getElementById('closeProject')
 let projectDialog = document.getElementById('projectDialog')
 
 addTask.addEventListener('click', () => {
-    let collect = new TaskContol
-    collect.taskDialogs()
-    collect.taskContent()
+    TaskContol.taskDialogs()
+    
 })
 
 
