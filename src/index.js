@@ -19,6 +19,14 @@ let Welcome = document.getElementById('Welcome')
 let addTask = document.getElementById('addTask')
 let addProject = document.getElementById('addProject')
 
+let today = document.getElementById('Today')
+let huh = document.getElementById('Huh')
+
+today.addEventListener('click', () => {
+
+  huh.showModal()
+})
+
 
 
 

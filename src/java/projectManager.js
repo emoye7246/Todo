@@ -44,14 +44,41 @@ export function projectManager(){
       sideProject.id = 'sideProject'
       sideProject.innerHTML = `${nameProjectInput.value}`
 
+
+      sideProject.addEventListener('click', () => {
+         
+         postProject.innerHTML = ' '
+
+         let placeProject = document.createElement('div')
+         placeProject.id = 'placeProject'
+
+         let newHeader = document.createElement('h3')
+         newHeader.innerHTML = `${nameProjectInput.value}`
+
+         let projectInfo = document.createElement('div')
+         projectInfo.innerHTML = `${projectDescriptionInput.value}`
+
+
+         addTaskToProject = document.createElement('button')
+         addTaskToProject.type = 'button'
+         addTaskToProject.innerHTML = 'Add Task'
+
+
+         postProject.append(placeProject)
+         placeProject.append(newHeader, projectInfo, addTaskToProject)
+      })
+
       projects.appendChild(sideProject)
 
       projectDialog.close()
    })
+
+
+
    // ONclikc display the project along with the descriprion to the page 
 
    projectForms.append(createHeader, nameProject, nameProjectInput, projectDescription, projectDescriptionInput, closeProjectDialog)
 
-
-
+   console.log('hw')
 }
+
