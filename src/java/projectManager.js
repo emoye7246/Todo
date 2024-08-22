@@ -68,20 +68,17 @@ export function projectManager(){
 
          let addTaskToProject = document.createElement('button')
          addTaskToProject.type = 'button'
-         addTaskToProject.innerHTML = 'Add Task'
+         addTaskToProject.innerHTML = 'Add Existing Task'
 
          addTaskToProject.addEventListener('click', () => {
 
             tasksLibrary.showModal()
-            tasksLibrary.innerHTML = ' '
 
-            let closeLibrary = document.createElement('button')
-            closeLibrary.innerHTML = 'Close'
-            closeLibrary.addEventListener('click', () => {
+            let closeTasks = document.getElementById('closeTasks')
+
+            closeTasks.addEventListener('click', () =>{
                tasksLibrary.close()
             })
-
-            tasksLibrary.appendChild(closeLibrary)
             
          })
 

@@ -95,3 +95,8 @@ export function taskControl(taskName, taskDescription, taskDate){
 
     
 }
+
+
+    display: flex;
+    width: 400px;
+    justify-content: space-evenly;

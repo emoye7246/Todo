@@ -62,6 +62,8 @@ export class TaskContol {
 
             let postTasks = document.getElementById('postTasks')
             let postProject = document.getElementById('postProject')
+            let closeTasks = document.getElementById('closeTasks')
+            
 
             postTasks.style.display = 'flex'
             postProject.style.display = 'none'
@@ -77,7 +79,7 @@ export class TaskContol {
 
             let taskLibrary = document.createElement('button')
             taskLibrary.innerHTML = `${nameInput.value}`
-            tasksLibrary.appendChild(taskLibrary)
+            tasksLibrary.insertBefore(taskLibrary, closeTasks)
 
 
 

@@ -56,4 +56,3 @@ addTask.addEventListener('click', () => {
 
 
 addProject.addEventListener('click' , projectManager)
-
