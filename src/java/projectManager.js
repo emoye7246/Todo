@@ -1,3 +1,5 @@
+import { TaskContol } from "./taskManager"
+
 export function projectManager(){
 
    let projectDialog = document.getElementById('projectDialog')
@@ -5,6 +7,7 @@ export function projectManager(){
    let postTasks = document.getElementById('postTasks')
    let projectForms = document.getElementById('projectForms')
    let projects = document.getElementById('projects')
+   let tasksLibrary = document.getElementById('tasksLibrary')
 
    postProject.style.display = 'flex'
    postTasks.style.display = 'none'
@@ -53,19 +56,38 @@ export function projectManager(){
          placeProject.id = 'placeProject'
 
          let newHeader = document.createElement('h3')
-         newHeader.innerHTML = `${nameProjectInput.value}`
+         newHeader.innerHTML = `Title: ${nameProjectInput.value}`
 
          let projectInfo = document.createElement('div')
-         projectInfo.innerHTML = `${projectDescriptionInput.value}`
+         projectInfo.innerHTML = `Description: ${projectDescriptionInput.value}`
+
+         let taskSection = document.createElement('div')
+         taskSection.id = 'taskSection'
+         taskSection.innerHTML = 'No way'
 
 
-         addTaskToProject = document.createElement('button')
+         let addTaskToProject = document.createElement('button')
          addTaskToProject.type = 'button'
          addTaskToProject.innerHTML = 'Add Task'
 
+         addTaskToProject.addEventListener('click', () => {
+
+            tasksLibrary.showModal()
+            tasksLibrary.innerHTML = ' '
+
+            let closeLibrary = document.createElement('button')
+            closeLibrary.innerHTML = 'Close'
+            closeLibrary.addEventListener('click', () => {
+               tasksLibrary.close()
+            })
+
+            tasksLibrary.appendChild(closeLibrary)
+            
+         })
+
 
          postProject.append(placeProject)
-         placeProject.append(newHeader, projectInfo, addTaskToProject)
+         placeProject.append(newHeader, projectInfo, addTaskToProject, taskSection)
       })
 
       projects.appendChild(sideProject)
@@ -74,11 +96,9 @@ export function projectManager(){
    })
 
 
-
    // ONclikc display the project along with the descriprion to the page 
 
    projectForms.append(createHeader, nameProject, nameProjectInput, projectDescription, projectDescriptionInput, closeProjectDialog)
 
    console.log('hw')
 }
-

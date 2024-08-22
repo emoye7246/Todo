@@ -10,6 +10,8 @@ export class TaskContol {
 
    static taskDialogs(){
 
+        let tasksLibrary = document.getElementById('tasksLibrary')
+
         let Welcome = document.getElementById('Welcome')
         Welcome.innerHTML = 'Your Tasks'
 
@@ -73,6 +75,12 @@ export class TaskContol {
             taskTitle.id = 'taskTitles'
             taskTitle.innerHTML = `${nameInput.value}`
 
+            let taskLibrary = document.createElement('button')
+            taskLibrary.innerHTML = `${nameInput.value}`
+            tasksLibrary.appendChild(taskLibrary)
+
+
+
 
             let taskInfo = document.createElement('div')
             taskInfo.id = 'taskInfo'
@@ -133,6 +141,7 @@ export class TaskContol {
             let removeButton = document.createElement('button')
             removeButton.className = 'removeButton'
             removeButton.innerHTML = 'Remove'
+            
 
             removeButton.addEventListener('click', () => {
                 let placeCardRemove = placeCard
@@ -150,4 +159,5 @@ export class TaskContol {
         taskForms.append(header, taskName, nameInput, taskDescription, descriptionInput, taskDate, dateInput, button)
         
     }
+    // We can work something out with this 
 }

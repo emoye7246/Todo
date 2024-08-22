@@ -168,9 +168,10 @@ text-align: center;
 #placeProject {
 
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-direction: column;
- height: 25vh;
+  height: 25vh;
+  justify-content: space-between;
 
 }
 

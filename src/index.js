@@ -20,11 +20,11 @@ let addTask = document.getElementById('addTask')
 let addProject = document.getElementById('addProject')
 
 let today = document.getElementById('Today')
-let huh = document.getElementById('Huh')
+let huh = document.getElementById('huh')
 
 today.addEventListener('click', () => {
 
-  huh.showModal()
+    TaskContol.testing()
 })
 
 
