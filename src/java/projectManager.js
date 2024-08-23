@@ -63,7 +63,7 @@ export function projectManager(){
 
          let taskSection = document.createElement('div')
          taskSection.id = 'taskSection'
-         taskSection.innerHTML = 'No way'
+         
 
 
          let addTaskToProject = document.createElement('button')

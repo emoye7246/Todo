@@ -11,6 +11,8 @@ export class TaskContol {
    static taskDialogs(){
 
         let tasksLibrary = document.getElementById('tasksLibrary')
+        let taskLibrary = document.createElement('button')
+
 
         let Welcome = document.getElementById('Welcome')
         Welcome.innerHTML = 'Your Tasks'
@@ -77,9 +79,7 @@ export class TaskContol {
             taskTitle.id = 'taskTitles'
             taskTitle.innerHTML = `${nameInput.value}`
 
-            let taskLibrary = document.createElement('button')
-            taskLibrary.innerHTML = `${nameInput.value}`
-            tasksLibrary.insertBefore(taskLibrary, closeTasks)
+
 
 
 
@@ -91,6 +91,27 @@ export class TaskContol {
             let taskDates = document.createElement('div')
             taskDates.id = 'taskDates'
             taskDates.innerHTML = `${dateInput.value}`
+
+            taskLibrary.innerHTML = `${nameInput.value}`
+            taskLibrary.addEventListener('click', () => {
+                let sendToProject = document.createElement('div')
+
+                let taskProjectTitle = document.createElement('div')
+                taskProjectTitle.innerHTML = `${nameInput.value}`
+
+                let taskDescriptionProject = document.createElement('div')
+                taskDescriptionProject.innerHTML = `${descriptionInput.value}`
+
+
+                let taskDateProject = document.createElement('div')
+                taskDateProject.innerHTML = `${dateInput.value}`
+                let taskSection = document.getElementById('taskSection')
+
+                tasksLibrary.close()
+                taskSection.append(sendToProject)
+                sendToProject.append(taskProjectTitle, taskDescriptionProject, taskDateProject)
+            })
+            tasksLibrary.insertBefore(taskLibrary, closeTasks)
             // Mid Section
             let changes = document.createElement('div')
             changes.id = 'changes'
@@ -147,7 +168,10 @@ export class TaskContol {
 
             removeButton.addEventListener('click', () => {
                 let placeCardRemove = placeCard
+                let taskLibraryRemove = taskLibrary
                 placeCardRemove.remove()
+                taskLibraryRemove.remove()
+                // Okay steve Wazni
             })
 
            
