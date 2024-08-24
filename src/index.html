@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To Do</title>
 </head>
 <body>
 
     <div>
-    <h1 id="Welcome">Welcome User</h1>
+    <h1 id="Welcome">Welcome Elijah</h1>
     </div>
 
     <div id="sidebar">
 
-        <div id="userLocation">
-            UserName
-        </div>
+        <div id="userLocation">Welcome Elijah</div>
 
-        <div id="Home">Home</div>
+        <div id="Home">Your Tasks</div>
 
         <button id="addTask">Add Task</button>
         <button id="Today">Today</button>
@@ -35,46 +33,27 @@
         <!-- Create projects here  -->
     </div>
 
-    <div id="displayProjects">
-        <dialog id="formResults">
-            <form onsubmit="return false" id="forms">
-                <label for="Name-of-Project">Name of Project</label>
-                <input type="text" name="Name-of-Project" id="Name-of-Project" placeholder="Project Name">
 
-                <label for="description">Description</label>
-                <input type="text" name="description" id="description" placeholder="Describe this Project">
+    <div id="content">
 
-                <button type="button" id="close">Close</button>
-            </form>
-        </dialog>
-    </div>
+   
 
-    <div id="displayTasks">
-        <dialog id="taskResult">
+      <div id="taskContent">Hello</div>
 
-            <form onsubmit="return false" id="forms">
-                <label for="Name-of-Task">Name of Task</label>
-                <input type="text" name="Name-of-Task" id="Name-of-Task" placeholder="Task Name">
+      <div id="ProjectsContent">Hello</div>
 
-                <label for="Name-of-Task">Description</label>
-                <input type="text" name="description" id="description" placeholder="Describe this Task">
-
-                <button type="button" id="closes">Close</button>
-            </form>
-
-
-        </dialog>
-    </div>
-
-    <!-- We will just use this dialog section to control all user inputs -->
-
-    <div id="postProject" style="display: none;">
-    </div>
-
-    <div id="postTasks" style="display: none;">
 
     </div>
 
+    
+    <!-- Controls UserInput -->
+
+
+    <dialog id="projectControl"></dialog>
+
+    <dialog id="taskControl"></dialog>
+
+ 
 
 </body>
 </html>
