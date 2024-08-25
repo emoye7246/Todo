@@ -5,9 +5,9 @@ html, body{
   html{
     height: 100%;
   }
-  /* body{
-    min-height: 100%;
-  } */
+  body{
+    min-height: 75%;
+  }
 
 body{
     display: flex;
@@ -84,6 +84,41 @@ text-align: center;
 #projectHeader:hover, #Home:hover{
 
   color: red;
+}
+
+#taskContent{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#row{
+
+  display: flex;
+  flex-direction: row;
+}
+
+#taskContent{ 
+  display: flex;
+}
+
+#taskSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  height: 20vh;
+  justify-content: space-evenly;
+}
+
+
+#buttonSection {
+  display: flex;
+  width: 50vw;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 
