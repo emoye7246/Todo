@@ -4,6 +4,12 @@ static createTaskDialog(){
 
 let taskControl = document.getElementById('taskControl')
 
+let ProjectsContent = document.getElementById('ProjectsContent')
+ProjectsContent.style.display = 'none'
+
+let taskContent = document.getElementById('taskContent')
+taskContent.style.display = 'flex'
+
 taskControl.showModal()
 
 taskControl.innerHTML = ' '
@@ -100,13 +106,64 @@ function postTasks(){
 
 
     function addToProject(){
-        console.log('hello')
+        let ProjectsContent = document.getElementById('ProjectsContent')
+
+        ProjectsContent.append(taskSection)
     }
 
     function editTasks(){
-        console.log('hello')
-    }
 
+       let editTaskDisplay = document.getElementById('editTaskDisplay')
+
+       editTaskDisplay.showModal()
+
+       editTaskDisplay.innerHTML = ' '
+        
+       let editTaskTitle = document.createElement('label')
+       editTaskTitle.htmlFor = 'editTask'
+       editTaskTitle.innerHTML = 'Edit Task'
+
+       let editTaskTitleI = document.createElement('input')
+       editTaskTitleI.id = 'editTask'
+
+
+       let editTaskDescription = document.createElement('label')
+       editTaskDescription.htmlFor = 'editDescription'
+       editTaskDescription.innerHTML = 'Edit Description'
+
+       let editTaskDescriptionI = document.createElement('input')
+       editTaskDescriptionI.id = 'editDescription'
+
+       let editTaskDate = document.createElement('label')
+       editTaskDate.htmlFor = 'editDate'
+       editTaskDate.innerHTML = 'Edit Date'
+
+       let editTaskDateI = document.createElement('input')
+       editTaskDateI.id = 'editDate'
+       editTaskDateI.type = 'date'
+
+       let closeEdit = document.createElement('button')
+       closeEdit.type = 'button'
+       closeEdit.innerHTML = 'Close'
+
+       closeEdit.addEventListener('click', () => {
+        let titleEdit = placeTaskTitle
+        let descriptionEdit = placeTaskDescription
+        let dateEdit = placeTaskDate
+
+        titleEdit.innerHTML = `${editTaskTitleI.value}`
+        descriptionEdit.innerHTML = `${editTaskDescriptionI.value}`
+        dateEdit.innerHTML = `${editTaskDateI.value}`
+
+
+        editTaskDisplay.close()
+       })
+
+       
+
+       editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
+    }
+    // Yes that would work
 }
 
 
