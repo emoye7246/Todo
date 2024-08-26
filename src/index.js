@@ -10,6 +10,11 @@ let addTask = document.getElementById('addTask')
 let addProject = document.getElementById('addProject')
 let ProjectsContent = document.getElementById('ProjectsContent')
 let taskContent = document.getElementById('taskContent')
+let storeTasks = document.getElementById('storeTasks')
+let closeTaskStorage = document.getElementById('closeTaskStorage')
+let storeProjects = document.getElementById('storeProjects')
+let closeProjectStorage = document.getElementById('closeProjectStorage')
+
 
 
 
@@ -49,3 +54,11 @@ addProject.addEventListener('click', () => {
     taskContent.style.display = 'none'
 })
 
+
+closeTaskStorage.addEventListener('click', () => {
+    storeTasks.close()
+})
+
+closeProjectStorage.addEventListener('click', () => {
+    storeProjects.close()
+})

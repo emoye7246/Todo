@@ -47,6 +47,15 @@ export class ProjectManager {
             showTitle.id = 'showTitle'
             showTitle.innerHTML = `${projectTitleInput.value}`
 
+            let storeProjects = document.getElementById('storeProjects')
+            let closeProjectStorage = document.getElementById('closeProjectStorage')
+
+            let projectsStore = document.createElement('button')
+            projectsStore.innerHTML = `${projectTitleInput.value}`
+
+            storeProjects.insertBefore(projectsStore, closeProjectStorage)
+
+            
 
             showTitle.addEventListener('click', displayProjects)
 
@@ -68,9 +77,14 @@ export class ProjectManager {
             let displayProjectDescription = document.createElement('div')
             displayProjectDescription.innerHTML = `${projectDescriptionInput.value}`
 
+            let showTasks = document.createElement('button')
+            showTasks.innerHTML = 'Show Tasks'
+            showTasks.type = 'button'
+
             let addExsitingTask = document.createElement('button')
             addExsitingTask.innerHTML = 'Add Existing Task'
             addExsitingTask.type = 'button'
+            addExsitingTask.addEventListener('click', addETask)
 
             let addNewTask = document.createElement('button')
             addNewTask.innerHTML = 'Add New Task'
@@ -81,9 +95,21 @@ export class ProjectManager {
             addExsitingTask.type = 'button'
 
 
+            let taskProjects = document.createElement('div')
+            taskProjects.id = 'taskProjects'
+            
+
+
             ProjectsContent.append(displayProject)
-            buttonProjects.append(addExsitingTask, addNewTask, addRemoveProject)
-            displayProject.append(displayProjectTitle, displayProjectDescription, buttonProjects)
+            buttonProjects.append(showTasks, addExsitingTask, addNewTask, addRemoveProject)
+            displayProject.append(displayProjectTitle, displayProjectDescription, buttonProjects, taskProjects)
+
+            function addETask(){
+                let storeTasks = document.getElementById('storeTasks')
+
+                storeTasks.showModal()
+
+            }
         }
         }
     }

@@ -64,6 +64,14 @@ getTask.append(createTaskHeader, taskTitle, taskTitleInput, taskDescription, tas
 function postTasks(){
 
     let taskContent = document.getElementById('taskContent')
+    let storeTasks = document.getElementById('storeTasks')
+    
+
+    let tasksStorage = document.createElement('button')
+    tasksStorage.innerHTML = `${taskTitleInput.value}`
+
+    storeTasks.insertBefore(tasksStorage, closeTaskStorage)
+
 
     let taskSection = document.createElement('div')
     taskSection.id = 'taskSection'
@@ -88,7 +96,7 @@ function postTasks(){
     removeTask.addEventListener('click', remove)
 
     let addTo = document.createElement('button')
-    addTo.innerHTML = 'Add to task'
+    addTo.innerHTML = 'Add to Project'
     addTo.addEventListener('click', addToProject)
 
     let editTask = document.createElement('button')
@@ -102,13 +110,14 @@ function postTasks(){
 
     function remove(){
         taskSection.remove()
+        tasksStorage.remove()
     }
 
 
     function addToProject(){
-        let ProjectsContent = document.getElementById('ProjectsContent')
+        let storeProjects = document.getElementById('storeProjects')
+        storeProjects.showModal()
 
-        ProjectsContent.append(taskSection)
     }
 
     function editTasks(){
@@ -150,10 +159,12 @@ function postTasks(){
         let titleEdit = placeTaskTitle
         let descriptionEdit = placeTaskDescription
         let dateEdit = placeTaskDate
+        let tasksStorageEdit = tasksStorage
 
         titleEdit.innerHTML = `${editTaskTitleI.value}`
         descriptionEdit.innerHTML = `${editTaskDescriptionI.value}`
         dateEdit.innerHTML = `${editTaskDateI.value}`
+        tasksStorageEdit.innerHTML = `${editTaskTitleI.value}`
 
 
         editTaskDisplay.close()
@@ -164,11 +175,11 @@ function postTasks(){
        editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
     }
     // Yes that would work
-}
+}   
 
 
 }
 
 
 }
-
+// Good Work
