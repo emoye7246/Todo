@@ -47,70 +47,54 @@ export class ProjectManager {
             showTitle.id = 'showTitle'
             showTitle.innerHTML = `${projectTitleInput.value}`
 
-            let storeProjects = document.getElementById('storeProjects')
-            let closeProjectStorage = document.getElementById('closeProjectStorage')
+            showTitle.addEventListener('click', projectShow)
 
-            let projectsStore = document.createElement('button')
-            projectsStore.innerHTML = `${projectTitleInput.value}`
+            function projectShow(){
 
-            storeProjects.insertBefore(projectsStore, closeProjectStorage)
+                ProjectsContent.style.display = 'flex'
 
-            
+                taskContent.style.display = 'none'
 
-            showTitle.addEventListener('click', displayProjects)
+                ProjectsContent.textContent = ' '
+
+                let placeElements = document.createElement('div')
+                placeElements.id = 'placeElements'
+    
+                let displayProjectTitle = document.createElement('div')
+                displayProjectTitle.innerHTML = `${projectTitleInput.value}`
+    
+                let displayProjectDescription = document.createElement('div')
+                displayProjectDescription.innerHTML = `${projectDescriptionInput.value}`
+
+                let buttonSeperate = document.createElement('div')
+                buttonSeperate.id = 'buttonSeperate'
+
+                let addExistingTasks = document.createElement('button')
+                addExistingTasks.innerHTML = 'Add Existing Task'
+
+                addExistingTasks.addEventListener('click', getTask)
+
+                let addNewTask = document.createElement('button')
+                addNewTask.innerHTML = 'Add New Task'
+    
+                ProjectsContent.append(placeElements)
+                buttonSeperate.append(addExistingTasks, addNewTask)
+                placeElements.append(displayProjectTitle, displayProjectDescription, buttonSeperate)
+
+
+                function getTask(){
+                    let storeTasks = document.getElementById('storeTasks')
+                    storeTasks.showModal()
+                }
+            }
+
 
             projects.append(showTitle)
 
 
-        function displayProjects(){
-            ProjectsContent.innerHTML = ' '
-
-            let displayProject = document.createElement('div')
-            displayProject.id = 'displayProject'
-
-            let buttonProjects = document.createElement('div')
-            buttonProjects.id = 'buttonProjects'
-
-            let displayProjectTitle = document.createElement('div')
-            displayProjectTitle.innerHTML = `${projectTitleInput.value}`
-
-            let displayProjectDescription = document.createElement('div')
-            displayProjectDescription.innerHTML = `${projectDescriptionInput.value}`
-
-            let showTasks = document.createElement('button')
-            showTasks.innerHTML = 'Show Tasks'
-            showTasks.type = 'button'
-
-            let addExsitingTask = document.createElement('button')
-            addExsitingTask.innerHTML = 'Add Existing Task'
-            addExsitingTask.type = 'button'
-            addExsitingTask.addEventListener('click', addETask)
-
-            let addNewTask = document.createElement('button')
-            addNewTask.innerHTML = 'Add New Task'
-            addExsitingTask.type = 'button'
-
-            let addRemoveProject = document.createElement('button')
-            addRemoveProject.innerHTML = 'Remove Project'
-            addExsitingTask.type = 'button'
-
-
-            let taskProjects = document.createElement('div')
-            taskProjects.id = 'taskProjects'
-            
-
-
-            ProjectsContent.append(displayProject)
-            buttonProjects.append(showTasks, addExsitingTask, addNewTask, addRemoveProject)
-            displayProject.append(displayProjectTitle, displayProjectDescription, buttonProjects, taskProjects)
-
-            function addETask(){
-                let storeTasks = document.getElementById('storeTasks')
-
-                storeTasks.showModal()
-
-            }
-        }
-        }
     }
+
+
+}
+
 }

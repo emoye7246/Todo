@@ -161,6 +161,30 @@ text-align: center;
   margin: 20px;
 }
 
+#ProjectsContent{
+
+  display: flex;
+  flex-direction: column;
+}
+
+#buttonSeperate{
+
+  display: flex;
+  width: 30vw;
+  justify-content: space-evenly;
+}
+
+#placeElements{
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: space-evenly;
+}
+
+
+
 
 
 
