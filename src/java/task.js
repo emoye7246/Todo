@@ -64,16 +64,6 @@ getTask.append(createTaskHeader, taskTitle, taskTitleInput, taskDescription, tas
 function postTasks(){
 
     let taskContent = document.getElementById('taskContent')
-    let storeTasks = document.getElementById('storeTasks')
-    
-
-    let tasksStorage = document.createElement('button')
-    tasksStorage.innerHTML = `${taskTitleInput.value}`
-
-    tasksStorage.addEventListener('click', sendToProject)
-
-    storeTasks.insertBefore(tasksStorage, closeTaskStorage)
-
 
     let taskSection = document.createElement('div')
     taskSection.id = 'taskSection'
@@ -108,7 +98,6 @@ function postTasks(){
 
     function remove(){
         taskSection.remove()
-        tasksStorage.remove()
     }
 
 
@@ -151,39 +140,21 @@ function postTasks(){
         let titleEdit = placeTaskTitle
         let descriptionEdit = placeTaskDescription
         let dateEdit = placeTaskDate
-        let tasksStorageEdit = tasksStorage
 
         titleEdit.innerHTML = `${editTaskTitleI.value}`
         descriptionEdit.innerHTML = `${editTaskDescriptionI.value}`
         dateEdit.innerHTML = `${editTaskDateI.value}`
-        tasksStorageEdit.innerHTML = `${editTaskTitleI.value}`
 
 
         editTaskDisplay.close()
        })
 
-       
-
        editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
-    }
-
-    function sendToProject(){
-
-        let placeElements = document.getElementById('placeElements')
-        let boohoo = taskSection
-
-        placeElements.append(boohoo)
-        
-
-        tasksStorage.remove()
-
     }
     // Yes that would work
 }   
 
-
 }
-
 
 }
 // Good Work

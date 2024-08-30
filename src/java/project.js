@@ -7,6 +7,11 @@ export class ProjectManager {
         let ProjectsContent = document.getElementById('ProjectsContent')
         ProjectsContent.style.display = 'flex'
         
+
+        let storePlaceElements = document.createElement('div')
+
+        let storePlaceTasks = document.createElement('div')
+        
         let taskContent = document.getElementById('taskContent')
         taskContent.style.display = 'none'
         
@@ -49,17 +54,23 @@ export class ProjectManager {
 
             showTitle.addEventListener('click', projectShow)
 
+            projects.append(showTitle)
+
+
             function projectShow(){
 
                 ProjectsContent.style.display = 'flex'
 
                 taskContent.style.display = 'none'
 
-                ProjectsContent.textContent = ' '
+                ProjectsContent.innerHTML = ' '
+
+                storePlaceElements.innerHTML = ' '
+
 
                 let placeElements = document.createElement('div')
                 placeElements.id = 'placeElements'
-    
+
                 let displayProjectTitle = document.createElement('div')
                 displayProjectTitle.innerHTML = `${projectTitleInput.value}`
     
@@ -72,28 +83,89 @@ export class ProjectManager {
                 let addExistingTasks = document.createElement('button')
                 addExistingTasks.innerHTML = 'Add Existing Task'
 
-                addExistingTasks.addEventListener('click', getTask)
-
                 let addNewTask = document.createElement('button')
                 addNewTask.innerHTML = 'Add New Task'
+
+                addNewTask.addEventListener('click', addTheTask)
+
+
+
     
-                ProjectsContent.append(placeElements)
+                ProjectsContent.append(storePlaceElements, storePlaceTasks)
+                storePlaceElements.append(placeElements)
                 buttonSeperate.append(addExistingTasks, addNewTask)
                 placeElements.append(displayProjectTitle, displayProjectDescription, buttonSeperate)
 
 
-                function getTask(){
-                    let storeTasks = document.getElementById('storeTasks')
-                    storeTasks.showModal()
-                }
+
             }
 
+            function addTheTask(){
 
-            projects.append(showTitle)
+                let addTasktoProject = document.getElementById('addTasktoProject')
+                addTasktoProject.showModal()
 
+                addTasktoProject.innerHTML = ' '
+
+                let holderFor = document.createElement('div')
+
+                let projectTaskHeader = document.createElement('h2')
+                projectTaskHeader.innerHTML = 'Add Task to Project'
+
+                let projectTaskTitle = document.createElement('label')
+                projectTaskTitle.innerHTML = 'Name of Task'
+                projectTaskTitle.htmlFor = 'ProjectTaskTitle'
+
+                let projectTaskTitleInput = document.createElement('input')
+                projectTaskTitleInput.id = 'ProjectTaskTitle'
+
+                let projectTaskDescription = document.createElement('label')
+                projectTaskDescription.innerHTML = 'Task Description'
+                projectTaskDescription.htmlFor = 'projectTaskDescription'
+
+                let projectTaskDescriptionInput = document.createElement('input')
+                projectTaskDescriptionInput.id = 'projectTaskDescription'
+
+                let projectTaskDate = document.createElement('label')
+                projectTaskDate.innerHTML = 'Due Date'
+                projectTaskDate.htmlFor = 'projectTaskDate'
+
+                let projectTaskDateInput = document.createElement('input')
+                projectTaskDateInput.type = 'date'
+                projectTaskDateInput.id = 'projectTaskDate'
+
+                let closeAddTasktoProject = document.createElement('button')
+                closeAddTasktoProject.innerHTML = 'Close'
+                closeAddTasktoProject.type = 'button'
+
+                closeAddTasktoProject.addEventListener('click', postToProjectPage)
+
+                addTasktoProject.append(holderFor)
+                holderFor.append(projectTaskHeader, projectTaskTitle, projectTaskTitleInput, projectTaskDescription, projectTaskDescriptionInput, projectTaskDate, projectTaskDateInput, closeAddTasktoProject)
+
+
+                function postToProjectPage(){
+
+                    let pageTaskTitle = document.createElement('div')
+                    pageTaskTitle.innerHTML = `${projectTaskTitleInput.value}`
+
+                    let pageTaskDescription = document.createElement('div')
+                    pageTaskDescription.innerHTML = `${projectDescriptionInput.value}`
+
+                    let pageTaskDate = document.createElement('div')
+                    pageTaskDate.innerHTML = `${projectTaskDateInput.value}`
+
+                    storePlaceTasks.append(pageTaskTitle, pageTaskDescription, pageTaskDate)
+
+                    addTasktoProject.close()
+                }
+
+
+            }
+
+            // Here lies the issue
 
     }
-
 
 }
 
