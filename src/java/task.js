@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export class TaskControl {
 
 static createTaskDialog(){
@@ -80,7 +82,8 @@ function postTasks(){
 
 
     let placeTaskDate = document.createElement('div')
-    placeTaskDate.innerHTML = `${taskDateInput.value}`
+    placeTaskDate.innerHTML = format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')
+    // LETSSSS FUCKING GOOOOOO
 
 
     let removeTask = document.createElement('button')
