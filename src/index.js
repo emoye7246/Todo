@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
+import {ProjectManager} from '/Users/elijahmoye/Desktop/todo/Todo/src/java/project.js'
 import { TaskControl } from './java/task';
-import { ProjectManager } from './java/project';
+import { datesControl } from './java/dates'
 
 let Welcome = document.getElementById('Welcome')
 let Home = document.getElementById('Home')
@@ -10,6 +11,7 @@ let addTask = document.getElementById('addTask')
 let addProject = document.getElementById('addProject')
 let ProjectsContent = document.getElementById('ProjectsContent')
 let taskContent = document.getElementById('taskContent')
+let upcoming = document.getElementById('Upcoming')
 
 Home.addEventListener('click', () => {
     Welcome.innerHTML = 'Your Tasks'
@@ -47,3 +49,5 @@ addProject.addEventListener('click', () => {
     taskContent.style.display = 'none'
 })
 
+
+upcoming.addEventListener('click', datesControl)

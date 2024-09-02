@@ -11,6 +11,7 @@ export class ProjectManager {
         let storePlaceElements = document.createElement('div')
 
         let storePlaceTasks = document.createElement('div')
+        storePlaceTasks.id = 'storePlaceTask'
         
         let taskContent = document.getElementById('taskContent')
         taskContent.style.display = 'none'
@@ -146,16 +147,31 @@ export class ProjectManager {
 
                 function postToProjectPage(){
 
+                    let pageTaskHeader = document.createElement('h3')
+                    pageTaskHeader.innerHTML = 'Your Task in This Project'
+
                     let pageTaskTitle = document.createElement('div')
                     pageTaskTitle.innerHTML = `${projectTaskTitleInput.value}`
 
                     let pageTaskDescription = document.createElement('div')
-                    pageTaskDescription.innerHTML = `${projectDescriptionInput.value}`
+                    pageTaskDescription.innerHTML = `${projectTaskDescriptionInput.value}`
 
                     let pageTaskDate = document.createElement('div')
                     pageTaskDate.innerHTML = `${projectTaskDateInput.value}`
 
-                    storePlaceTasks.append(pageTaskTitle, pageTaskDescription, pageTaskDate)
+                    let pageButtons = document.createElement('div')
+                    pageButtons.id = 'pageButtons'
+
+                    let pageEditTask = document.createElement('button')
+                    pageEditTask.type = 'button'
+                    pageEditTask.innerHTML = 'Edit'
+
+                    let pageRemoveTask = document.createElement('button')
+                    pageRemoveTask.type = 'button'
+                    pageRemoveTask.innerHTML = 'Remove'
+
+                    pageButtons.append(pageEditTask, pageRemoveTask)
+                    storePlaceTasks.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
 
                     addTasktoProject.close()
                 }

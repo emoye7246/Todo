@@ -134,6 +134,12 @@ text-align: center;
   display: flex;
 }
 
+#taskSection{
+
+  border: 1px solid black;
+  width: 400px;
+}
+
 #taskSection, #displayProject {
   display: flex;
   flex-direction: column;
@@ -181,6 +187,24 @@ text-align: center;
   flex-direction: column;
   height: 50vh;
   justify-content: space-evenly;
+}
+
+#storePlaceTask{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#pageButtons{
+
+  display: flex;
+  margin: 10px;
+  /* width: 20px; */
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+
 }
 
 
