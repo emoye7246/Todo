@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { datesControl } from "./dates";
 
 export class TaskControl {
 
@@ -11,6 +12,10 @@ ProjectsContent.style.display = 'none'
 
 let taskContent = document.getElementById('taskContent')
 taskContent.style.display = 'flex'
+
+let upcomingContent  = document.getElementById('upcomingContent')
+upcomingContent.style.display = 'none'
+
 
 taskControl.showModal()
 
@@ -45,6 +50,8 @@ taskDate.htmlFor = 'taskDate'
 let taskDateInput = document.createElement('input')
 taskDateInput.id = 'taskDate'
 taskDateInput.type = 'date'
+
+let todaysDate = new Date()
 
 
 let closeTasks = document.createElement('button')
@@ -85,10 +92,12 @@ function postTasks(){
     placeTaskDate.innerHTML = format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')
     // LETSSSS FUCKING GOOOOOO
 
-
     let removeTask = document.createElement('button')
     removeTask.innerHTML = 'Remove'
     removeTask.addEventListener('click', remove)
+
+    let moveTask = document.createElement('button')
+    moveTask.innerHTML = 'Move To'
 
     let editTask = document.createElement('button')
     editTask.innerHTML = 'Edit'
@@ -96,7 +105,7 @@ function postTasks(){
 
     taskContent.append(taskSection)
     taskSection.append(placeTaskTitle, placeTaskDescription, placeTaskDate, buttonSection)
-    buttonSection.append(removeTask, editTask)
+    buttonSection.append(removeTask, editTask, moveTask)
 
 
     function remove(){
@@ -146,7 +155,9 @@ function postTasks(){
 
         titleEdit.innerHTML = `${editTaskTitleI.value}`
         descriptionEdit.innerHTML = `${editTaskDescriptionI.value}`
-        dateEdit.innerHTML = `${editTaskDateI.value}`
+        dateEdit.innerHTML = format(new Date(`'${editTaskDateI.value}'`), 'MMMM do yyyy')
+
+        datesControl(todaysDate, `'${editTaskDateI.value}'`, taskSection )
 
 
         editTaskDisplay.close()
@@ -155,6 +166,11 @@ function postTasks(){
        editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
     }
     // Yes that would work
+
+
+    datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)
+
+
 }   
 
 }

@@ -1,18 +1,30 @@
-import { differenceInDays, addMonths, addDays} from "date-fns";
+import { differenceInCalendarDays, format} from "date-fns";
 
 // YY/MM/DD
 
 export function datesControl(dateNow, dateInputed, border){
 
-    dateNow = new Date()
+    let checkDate = differenceInCalendarDays(dateInputed, (dateNow))
 
-    let checkDate = differenceInDays((dateNow), dateInputed)
+
 
     if(checkDate < 8){
 
-        border.style.color = 'red'
         console.log(checkDate)
+        console.log(`This task is Due in less than ${checkDate} days`)
+        border.style.border = '1px solid red'
+    }
+    else if (checkDate >= 8){
+
+        console.log(checkDate)
+        console.log(`This task is Due in ${checkDate} days`)
+        border.style.border = '1px solid green'
+
+
+
     }
 
-
+// cntrl z dont go away from this page
+// Yessir 
+// SO Fucking Proud
 }

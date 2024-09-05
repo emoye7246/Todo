@@ -15,6 +15,10 @@ export class ProjectManager {
         
         let taskContent = document.getElementById('taskContent')
         taskContent.style.display = 'none'
+
+
+        let upcomingContent  = document.getElementById('upcomingContent')
+        upcomingContent.style.display = 'none'
         
 
         projectControl.showModal()

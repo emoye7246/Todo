@@ -3,6 +3,7 @@ import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import {ProjectManager} from '/Users/elijahmoye/Desktop/todo/Todo/src/java/project.js'
 import { TaskControl } from './java/task';
 import { datesControl } from './java/dates'
+import { upcomingDates } from './java/upcoming';
 
 let Welcome = document.getElementById('Welcome')
 let Home = document.getElementById('Home')
@@ -50,4 +51,4 @@ addProject.addEventListener('click', () => {
 })
 
 
-upcoming.addEventListener('click', datesControl)
+upcoming.addEventListener('click', upcomingDates)
