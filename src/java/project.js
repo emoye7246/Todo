@@ -1,6 +1,11 @@
+import { format } from "date-fns";
+import { datesControl } from "./dates";
+
 export class ProjectManager {
      
     static createProjectDialog(){
+
+        let todaysDate = new Date()
 
         let projectControl = document.getElementById('projectControl')
 
@@ -64,10 +69,16 @@ export class ProjectManager {
 
                 taskContent.style.display = 'none'
 
+                upcomingContent.style.display = 'none'
+
+
                 ProjectsContent.innerHTML = ' '
 
                 storePlaceElements.innerHTML = ' '
 
+                
+                let Welcome = document.getElementById('Welcome')
+                Welcome.innerHTML = 'Your Projects'
 
                 let placeElements = document.createElement('div')
                 placeElements.id = 'placeElements'
@@ -159,17 +170,20 @@ export class ProjectManager {
 
                 function postToProjectPage(){
 
+                    let holdTheProject = document.createElement('div')
+                    holdTheProject.id = 'holdTheProject'
+                    
                     let pageTaskHeader = document.createElement('h3')
                     pageTaskHeader.innerHTML = 'Your Task in This Project'
 
                     let pageTaskTitle = document.createElement('div')
-                    pageTaskTitle.innerHTML = `${projectTaskTitleInput.value}`
+                    pageTaskTitle.innerHTML = `Task Name: ${projectTaskTitleInput.value}`
 
                     let pageTaskDescription = document.createElement('div')
-                    pageTaskDescription.innerHTML = `${projectTaskDescriptionInput.value}`
+                    pageTaskDescription.innerHTML = `Task Description: ${projectTaskDescriptionInput.value}`
 
                     let pageTaskDate = document.createElement('div')
-                    pageTaskDate.innerHTML = `${projectTaskDateInput.value}`
+                    pageTaskDate.innerHTML = ` Due Date: ${format(new Date(`'${projectTaskDateInput.value}'`), 'MMMM do yyyy')}`
 
                     let pageButtons = document.createElement('div')
                     pageButtons.id = 'pageButtons'
@@ -184,8 +198,13 @@ export class ProjectManager {
                     pageRemoveTask.type = 'button'
                     pageRemoveTask.innerHTML = 'Remove'
 
+                    pageRemoveTask.addEventListener('click', removeTasks)
+
                     pageButtons.append(pageEditTask, pageRemoveTask)
-                    storePlaceTasks.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
+                    holdTheProject.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
+                    storePlaceTasks.append(holdTheProject)
+
+
 
                     function editProjectTask(){
 
@@ -229,19 +248,27 @@ export class ProjectManager {
                         closeEditProjectTask.addEventListener('click', () => {
 
                             let pageTaskTitleUpdate = pageTaskTitle
-                            pageTaskTitleUpdate.innerHTML = `${editTaskTitleProjectInput.value}`
+                            pageTaskTitleUpdate.innerHTML = `Task Name: ${editTaskTitleProjectInput.value}`
 
                             let pageTaskDescriptionUpdate = pageTaskDescription
-                            pageTaskDescriptionUpdate.innerHTML = `${editTaskDescriptionProjectInput.value}`
+                            pageTaskDescriptionUpdate.innerHTML = `Task Description: ${editTaskDescriptionProjectInput.value}`
 
                             let pageTaskDateUpdate = pageTaskDate
-                            pageTaskDateUpdate.innerHTML = `${editTaskDateProjectInput.value}`
+                            pageTaskDateUpdate.innerHTML = `Due Date: ${format(new Date(`'${editTaskDateProjectInput.value}'`), 'MMMM do yyyy')}`
+
+                            datesControl(todaysDate, `'${editTaskDateProjectInput.value}'`, holdTheProject)
 
                             editProjectTaskDisplay.close()
                         })
 
                         editProjectTaskDisplay.append(editTaskTitleHeader, editTaskTitleProject, editTaskTitleProjectInput, editTaskDescriptionProject, editTaskDescriptionProjectInput, editTaskDateProject, editTaskDateProjectInput, closeEditProjectTask)
                     }
+
+                    function removeTasks(){
+                        holdTheProject.remove()
+                    }
+
+                    datesControl(todaysDate, `'${projectTaskDateInput.value}'`, holdTheProject)
 
                 }
 

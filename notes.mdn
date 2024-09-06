@@ -28,12 +28,12 @@ work on dates
 change the use or fucntion of the sidebar project e
 
 
-phase 3 
+phase 4
 
-add buttonControl for task Section in projects
-maybe move exisitng tasks or get that working 
-work on Dates (change Today to Upcoming)
-and styling 
+send Tasks created in Projects to upcoming (should be fun)
+Add existing Task to project 
+move task to project 
 
-required on all feilds 
-create x button to close dialogs
+ascending order in upcoming 
+
+completed task

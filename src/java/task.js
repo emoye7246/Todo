@@ -175,6 +175,8 @@ function postTasks(){
         upComingDateEdit.innerHTML = ` Due Date: ${format(new Date(`'${editTaskDateI.value}'`), 'MMMM do yyyy')}`
 
         datesControl(todaysDate, `'${editTaskDateI.value}'`, taskSection )
+        datesControl(todaysDate, `'${editTaskDateI.value}'`, upcomingTask)
+
         upcomingTasksControl(todaysDate, `'${editTaskDateI.value}'`, upcomingTask )
 
 
@@ -187,6 +189,10 @@ function postTasks(){
 
 
     datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)
+
+    datesControl(todaysDate, `'${taskDateInput.value}'`, upcomingTask)
+
+    
 
 
     upcomingTasksControl(todaysDate, `'${taskDateInput.value}'`, upcomingTask)
