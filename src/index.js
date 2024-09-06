@@ -13,10 +13,13 @@ let addProject = document.getElementById('addProject')
 let ProjectsContent = document.getElementById('ProjectsContent')
 let taskContent = document.getElementById('taskContent')
 let upcoming = document.getElementById('Upcoming')
+let upcomingContent = document.getElementById('upcomingContent')
+
 
 Home.addEventListener('click', () => {
     Welcome.innerHTML = 'Your Tasks'
 
+    upcomingContent.style.display = 'none'
     ProjectsContent.style.display = 'none'
 
     taskContent.style.display = 'flex'
@@ -29,6 +32,8 @@ projectHeader.addEventListener('click', () => {
     ProjectsContent.style.display = 'flex'
 
     taskContent.style.display = 'none'
+    upcomingContent.style.display = 'none'
+
 
 })
 
@@ -39,6 +44,8 @@ addTask.addEventListener('click', () => {
     ProjectsContent.style.display = 'none'
 
     taskContent.style.display = 'flex'
+    upcomingContent.style.display = 'none'
+
 })
 
 addProject.addEventListener('click', () => {
@@ -48,7 +55,20 @@ addProject.addEventListener('click', () => {
     ProjectsContent.style.display = 'flex'
 
     taskContent.style.display = 'none'
+    upcomingContent.style.display = 'none'
+
 })
 
 
-upcoming.addEventListener('click', upcomingDates)
+upcoming.addEventListener('click', () => {
+
+    Welcome.innerHTML = 'Upcoming Tasks'
+
+    upcomingContent.style.display = 'flex'
+
+    taskContent.style.display = 'none'
+    ProjectsContent.style.display = 'none'
+
+
+
+})

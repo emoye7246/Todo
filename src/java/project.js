@@ -15,10 +15,6 @@ export class ProjectManager {
         
         let taskContent = document.getElementById('taskContent')
         taskContent.style.display = 'none'
-
-
-        let upcomingContent  = document.getElementById('upcomingContent')
-        upcomingContent.style.display = 'none'
         
 
         projectControl.showModal()
@@ -91,6 +87,12 @@ export class ProjectManager {
                 let addNewTask = document.createElement('button')
                 addNewTask.innerHTML = 'Add New Task'
 
+                let removeProject = document.createElement('button')
+                removeProject.innerHTML = 'Delete Project'
+
+                let editProject = document.createElement('button')
+                editProject.innerHTML = 'Edit Project'
+
                 addNewTask.addEventListener('click', addTheTask)
 
 
@@ -98,7 +100,7 @@ export class ProjectManager {
     
                 ProjectsContent.append(storePlaceElements, storePlaceTasks)
                 storePlaceElements.append(placeElements)
-                buttonSeperate.append(addExistingTasks, addNewTask)
+                buttonSeperate.append(addExistingTasks, addNewTask, editProject, removeProject)
                 placeElements.append(displayProjectTitle, displayProjectDescription, buttonSeperate)
 
 
@@ -143,10 +145,16 @@ export class ProjectManager {
                 closeAddTasktoProject.innerHTML = 'Close'
                 closeAddTasktoProject.type = 'button'
 
-                closeAddTasktoProject.addEventListener('click', postToProjectPage)
+                closeAddTasktoProject.addEventListener('click', () => {
+
+                    postToProjectPage()
+                    addTasktoProject.close()
+
+                })
 
                 addTasktoProject.append(holderFor)
                 holderFor.append(projectTaskHeader, projectTaskTitle, projectTaskTitleInput, projectTaskDescription, projectTaskDescriptionInput, projectTaskDate, projectTaskDateInput, closeAddTasktoProject)
+
 
 
                 function postToProjectPage(){
@@ -170,6 +178,8 @@ export class ProjectManager {
                     pageEditTask.type = 'button'
                     pageEditTask.innerHTML = 'Edit'
 
+                    pageEditTask.addEventListener('click', editProjectTask)
+
                     let pageRemoveTask = document.createElement('button')
                     pageRemoveTask.type = 'button'
                     pageRemoveTask.innerHTML = 'Remove'
@@ -177,7 +187,62 @@ export class ProjectManager {
                     pageButtons.append(pageEditTask, pageRemoveTask)
                     storePlaceTasks.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
 
-                    addTasktoProject.close()
+                    function editProjectTask(){
+
+                        let editProjectTaskDisplay = document.getElementById('editProjectTaskDisplay')
+                        editProjectTaskDisplay.showModal()
+
+                        editProjectTaskDisplay.innerHTML = ' '
+
+                        let editTaskTitleHeader = document.createElement('h3')
+                        editTaskTitleHeader.innerHTML = 'Edit This Task'
+
+                        let editTaskTitleProject = document.createElement('label')
+                        editTaskTitleProject.htmlFor = 'taskTitleProject'
+                        editTaskTitleProject.innerHTML = 'Task Title'
+
+                        let editTaskTitleProjectInput = document.createElement('input')
+                        editTaskTitleProjectInput.id = 'taskTitleProject'
+
+                        let editTaskDescriptionProject = document.createElement('label')
+                        editTaskDescriptionProject.htmlFor = 'taskDescriptionProject'
+                        editTaskDescriptionProject.innerHTML = 'Task Description'
+
+                        let editTaskDescriptionProjectInput = document.createElement('input')
+                        editTaskDescriptionProjectInput.id = 'taskDescriptionProject'
+
+
+                        let editTaskDateProject = document.createElement('label')
+                        editTaskDateProject.htmlFor = 'editDateProject'
+                        editTaskDateProject.innerHTML = 'Task Date'
+
+
+                        let editTaskDateProjectInput = document.createElement('input')
+                        editTaskDateProjectInput.type = 'date'
+                        editTaskDateProjectInput.id = 'editDateProject'
+
+
+                        let closeEditProjectTask = document.createElement('button')
+                        closeEditProjectTask.innerHTML = 'Close'
+
+
+                        closeEditProjectTask.addEventListener('click', () => {
+
+                            let pageTaskTitleUpdate = pageTaskTitle
+                            pageTaskTitleUpdate.innerHTML = `${editTaskTitleProjectInput.value}`
+
+                            let pageTaskDescriptionUpdate = pageTaskDescription
+                            pageTaskDescriptionUpdate.innerHTML = `${editTaskDescriptionProjectInput.value}`
+
+                            let pageTaskDateUpdate = pageTaskDate
+                            pageTaskDateUpdate.innerHTML = `${editTaskDateProjectInput.value}`
+
+                            editProjectTaskDisplay.close()
+                        })
+
+                        editProjectTaskDisplay.append(editTaskTitleHeader, editTaskTitleProject, editTaskTitleProjectInput, editTaskDescriptionProject, editTaskDescriptionProjectInput, editTaskDateProject, editTaskDateProjectInput, closeEditProjectTask)
+                    }
+
                 }
 
 

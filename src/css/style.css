@@ -137,7 +137,8 @@ text-align: center;
 #taskSection{
 
   border: 1px solid black;
-  width: 400px;
+  width: 500px;
+  border-radius: 10px;
 }
 
 #taskSection, #displayProject {
@@ -175,9 +176,9 @@ text-align: center;
 
 #buttonSeperate{
 
+  width: 500px;
   display: flex;
-  width: 30vw;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 #placeElements{
@@ -207,6 +208,20 @@ text-align: center;
 
 }
 
+
+#upcomingContent{
+
+  display: flex;
+  flex-direction: column;
+}
+
+#upcomingTask, #futureTasks {
+
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  justify-content: space-evenly;
+}
 
 
 

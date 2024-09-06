@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { datesControl } from "./dates";
+import { upcomingTasksControl } from "./dates";
 
 export class TaskControl {
 
@@ -12,10 +13,6 @@ ProjectsContent.style.display = 'none'
 
 let taskContent = document.getElementById('taskContent')
 taskContent.style.display = 'flex'
-
-let upcomingContent  = document.getElementById('upcomingContent')
-upcomingContent.style.display = 'none'
-
 
 taskControl.showModal()
 
@@ -77,20 +74,31 @@ function postTasks(){
     let taskSection = document.createElement('div')
     taskSection.id = 'taskSection'
 
+    let upcomingTask = document.createElement('div')
+    upcomingTask.id = 'upcomingTask'
+
     let buttonSection = document.createElement('div')
     buttonSection.id = 'buttonSection'
 
 
     let placeTaskTitle = document.createElement('div')
-    placeTaskTitle.innerHTML = `${taskTitleInput.value}`
+    placeTaskTitle.innerHTML = `Task Name: ${taskTitleInput.value}`
+
+    let upcomingPlaceTaskTitle = document.createElement('div')
+    upcomingPlaceTaskTitle.innerHTML = `Task Name: ${taskTitleInput.value}`
 
     let placeTaskDescription = document.createElement('div')
-    placeTaskDescription.innerHTML = `${taskDescriptionInput.value}`
+    placeTaskDescription.innerHTML = `Task Description: ${taskDescriptionInput.value}`
+
+    let upcomingPlaceTaskDescription = document.createElement('div')
+    upcomingPlaceTaskDescription.innerHTML = `Task Description:  ${taskDescriptionInput.value}`
 
 
     let placeTaskDate = document.createElement('div')
-    placeTaskDate.innerHTML = format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')
-    // LETSSSS FUCKING GOOOOOO
+    placeTaskDate.innerHTML = ` Due Date: ${format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')}`
+
+    let upcomingPlaceTaskDate = document.createElement('div')
+    upcomingPlaceTaskDate.innerHTML =` Due Date: ${format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')}`
 
     let removeTask = document.createElement('button')
     removeTask.innerHTML = 'Remove'
@@ -105,11 +113,12 @@ function postTasks(){
 
     taskContent.append(taskSection)
     taskSection.append(placeTaskTitle, placeTaskDescription, placeTaskDate, buttonSection)
+    upcomingTask.append(upcomingPlaceTaskTitle, upcomingPlaceTaskDescription, upcomingPlaceTaskDate)
     buttonSection.append(removeTask, editTask, moveTask)
-
 
     function remove(){
         taskSection.remove()
+        upcomingTask.remove()
     }
 
 
@@ -153,11 +162,20 @@ function postTasks(){
         let descriptionEdit = placeTaskDescription
         let dateEdit = placeTaskDate
 
-        titleEdit.innerHTML = `${editTaskTitleI.value}`
-        descriptionEdit.innerHTML = `${editTaskDescriptionI.value}`
-        dateEdit.innerHTML = format(new Date(`'${editTaskDateI.value}'`), 'MMMM do yyyy')
+        let upComingTitleEdit = upcomingPlaceTaskTitle
+        let upComingTitleDescription = upcomingPlaceTaskDescription
+        let upComingDateEdit = upcomingPlaceTaskDate
+
+        titleEdit.innerHTML = `Task Name: ${editTaskTitleI.value}`
+        descriptionEdit.innerHTML = `Task Description: ${editTaskDescriptionI.value}`
+        dateEdit.innerHTML =  `Due Date: ${format(new Date(`'${editTaskDateI.value}'`), 'MMMM do yyyy')}`
+
+        upComingTitleEdit.innerHTML = `Task Name: ${editTaskTitleI.value}`
+        upComingTitleDescription.innerHTML = `Task Description: ${editTaskDescriptionI.value}`
+        upComingDateEdit.innerHTML = ` Due Date: ${format(new Date(`'${editTaskDateI.value}'`), 'MMMM do yyyy')}`
 
         datesControl(todaysDate, `'${editTaskDateI.value}'`, taskSection )
+        upcomingTasksControl(todaysDate, `'${editTaskDateI.value}'`, upcomingTask )
 
 
         editTaskDisplay.close()
@@ -171,6 +189,9 @@ function postTasks(){
     datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)
 
 
+    upcomingTasksControl(todaysDate, `'${taskDateInput.value}'`, upcomingTask)
+
+    
 }   
 
 }
