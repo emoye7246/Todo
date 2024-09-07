@@ -200,7 +200,7 @@ function postTasks(){
         completedThisTask.showModal()
         
         completedThisTask.innerHTML = ' '
-        
+
         let question = document.createElement('h2')
         question.innerHTML = 'Has this task been Completed'
 
@@ -209,6 +209,26 @@ function postTasks(){
 
         let yes = document.createElement('button')
         yes.innerHTML = 'Yes'
+
+        yes.addEventListener('click', () => {
+            let finishedTasks = document.getElementById('finishedTasks')
+
+            let congratsMessgae = document.createElement('div')
+            congratsMessgae.innerHTML = '<b>Congrats You Have completed this task keep going</b>'
+
+
+
+            removeTask.remove()
+            editTask.remove()
+            completedTask.remove()
+            upcomingTask.remove()
+
+            taskSection.append(congratsMessgae)
+            finishedTasks.append(taskSection)
+            taskSection.style.border = '1px solid green'
+
+            completedThisTask.close()
+        })
 
         let no = document.createElement('button')
         no.innerHTML = 'No'
