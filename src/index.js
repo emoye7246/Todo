@@ -2,8 +2,6 @@ import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import {ProjectManager} from '/Users/elijahmoye/Desktop/todo/Todo/src/java/project.js'
 import { TaskControl } from './java/task';
-import { datesControl } from './java/dates'
-import { upcomingDates } from './java/upcoming';
 
 let Welcome = document.getElementById('Welcome')
 let Home = document.getElementById('Home')
@@ -14,15 +12,20 @@ let ProjectsContent = document.getElementById('ProjectsContent')
 let taskContent = document.getElementById('taskContent')
 let upcoming = document.getElementById('Upcoming')
 let upcomingContent = document.getElementById('upcomingContent')
+let Completed = document.getElementById('Completed')
+let myCompletedTask = document.getElementById('myCompletedTask')
+
 
 
 Home.addEventListener('click', () => {
     Welcome.innerHTML = 'Your Tasks'
 
+    myCompletedTask.style.display = 'none'
     upcomingContent.style.display = 'none'
     ProjectsContent.style.display = 'none'
 
     taskContent.style.display = 'flex'
+
 
 })
 
@@ -33,6 +36,8 @@ projectHeader.addEventListener('click', () => {
 
     taskContent.style.display = 'none'
     upcomingContent.style.display = 'none'
+    myCompletedTask.style.display = 'none'
+
 
 
 })
@@ -45,6 +50,8 @@ addTask.addEventListener('click', () => {
 
     taskContent.style.display = 'flex'
     upcomingContent.style.display = 'none'
+    myCompletedTask.style.display = 'none'
+
 
 })
 
@@ -56,6 +63,8 @@ addProject.addEventListener('click', () => {
 
     taskContent.style.display = 'none'
     upcomingContent.style.display = 'none'
+    myCompletedTask.style.display = 'none'
+
 
 })
 
@@ -66,6 +75,21 @@ upcoming.addEventListener('click', () => {
 
     upcomingContent.style.display = 'flex'
 
+    taskContent.style.display = 'none'
+    ProjectsContent.style.display = 'none'
+    myCompletedTask.style.display = 'none'
+
+
+
+
+})
+
+Completed.addEventListener('click', () => {
+
+    Welcome.innerHTML = 'Completed Tasks'
+
+    myCompletedTask.style.display = 'flex'
+    upcomingContent.style.display = 'none'
     taskContent.style.display = 'none'
     ProjectsContent.style.display = 'none'
 

@@ -100,21 +100,27 @@ function postTasks(){
     let upcomingPlaceTaskDate = document.createElement('div')
     upcomingPlaceTaskDate.innerHTML =` Due Date: ${format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')}`
 
+
+
     let removeTask = document.createElement('button')
     removeTask.innerHTML = 'Remove'
     removeTask.addEventListener('click', remove)
-
-    let moveTask = document.createElement('button')
-    moveTask.innerHTML = 'Move To'
 
     let editTask = document.createElement('button')
     editTask.innerHTML = 'Edit'
     editTask.addEventListener('click', editTasks)
 
+    let completedTask = document.createElement('button')
+    completedTask.innerHTML = 'Completed'
+    completedTask.addEventListener('click', taskCompleted)
+
     taskContent.append(taskSection)
+
     taskSection.append(placeTaskTitle, placeTaskDescription, placeTaskDate, buttonSection)
+
     upcomingTask.append(upcomingPlaceTaskTitle, upcomingPlaceTaskDescription, upcomingPlaceTaskDate)
-    buttonSection.append(removeTask, editTask, moveTask)
+
+    buttonSection.append(removeTask, editTask, completedTask)
 
     function remove(){
         taskSection.remove()
@@ -186,6 +192,36 @@ function postTasks(){
        editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
     }
     // Yes that would work
+
+    function taskCompleted(){
+
+        let completedThisTask = document.getElementById('completedThisTask')
+
+        completedThisTask.showModal()
+        
+        completedThisTask.innerHTML = ' '
+        
+        let question = document.createElement('h2')
+        question.innerHTML = 'Has this task been Completed'
+
+        let buttonSeperation = document.createElement('div')
+        buttonSeperation.id = 'buttonSeperation'
+
+        let yes = document.createElement('button')
+        yes.innerHTML = 'Yes'
+
+        let no = document.createElement('button')
+        no.innerHTML = 'No'
+
+        no.addEventListener('click', () => {
+            completedThisTask.close()
+        })
+
+
+        buttonSeperation.append(yes, no)
+        completedThisTask.append(question, buttonSeperation)
+
+    }
 
 
     datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)

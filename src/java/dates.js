@@ -15,14 +15,10 @@ export function datesControl(dateNow, dateInputed, border){
 
     if(checkDate < 8){
 
-        console.log(checkDate)
-        console.log(`This task is Due in less than ${checkDate} days`)
         border.style.border = '1px solid red'
     }
     else if (checkDate >= 8){
 
-        console.log(checkDate)
-        console.log(`This task is Due in ${checkDate} days`)
         border.style.border = '1px solid green'
 
 

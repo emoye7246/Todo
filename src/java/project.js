@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { datesControl } from "./dates";
+import { upcomingTasksControl } from "./dates";
 
 export class ProjectManager {
      
@@ -172,18 +173,35 @@ export class ProjectManager {
 
                     let holdTheProject = document.createElement('div')
                     holdTheProject.id = 'holdTheProject'
+
+                    let holdTheProjectUpcoming = document.createElement('div')
+                    holdTheProjectUpcoming.id = 'holdTheProjectUpcoming'
                     
                     let pageTaskHeader = document.createElement('h3')
                     pageTaskHeader.innerHTML = 'Your Task in This Project'
 
+
                     let pageTaskTitle = document.createElement('div')
-                    pageTaskTitle.innerHTML = `Task Name: ${projectTaskTitleInput.value}`
+                    pageTaskTitle.innerHTML = `<b>Task Name</b>: ${projectTaskTitleInput.value}`
+
+                    let upcomingPageTaskTitle = document.createElement('div')
+                    upcomingPageTaskTitle.innerHTML = `<b>Task Name</b>: ${projectTaskTitleInput.value}`
+
 
                     let pageTaskDescription = document.createElement('div')
-                    pageTaskDescription.innerHTML = `Task Description: ${projectTaskDescriptionInput.value}`
+                    pageTaskDescription.innerHTML = `<b>Task Description</b>: ${projectTaskDescriptionInput.value}`
+
+                    let upcomingPageTaskDescription = document.createElement('div')
+                    upcomingPageTaskDescription.innerHTML = `<b>Task Description</b>: ${projectTaskDescriptionInput.value}`
 
                     let pageTaskDate = document.createElement('div')
-                    pageTaskDate.innerHTML = ` Due Date: ${format(new Date(`'${projectTaskDateInput.value}'`), 'MMMM do yyyy')}`
+                    pageTaskDate.innerHTML = `<b> Due Date</b>: ${format(new Date(`'${projectTaskDateInput.value}'`), 'MMMM do yyyy')}`
+
+                    let upcomingPageTaskDate = document.createElement('div')
+                    upcomingPageTaskDate.innerHTML = ` <b> Due Date </b>: ${format(new Date(`'${projectTaskDateInput.value}'`), 'MMMM do yyyy')}`
+
+                    let upcomingTaskLocation = document.createElement('div')
+                    upcomingTaskLocation.innerHTML = `<b> This task is in the ${projectTitleInput.value} Project</b>`
 
                     let pageButtons = document.createElement('div')
                     pageButtons.id = 'pageButtons'
@@ -202,6 +220,7 @@ export class ProjectManager {
 
                     pageButtons.append(pageEditTask, pageRemoveTask)
                     holdTheProject.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
+                    holdTheProjectUpcoming.append(upcomingPageTaskTitle, upcomingPageTaskDescription, upcomingPageTaskDate, upcomingTaskLocation)
                     storePlaceTasks.append(holdTheProject)
 
 
@@ -250,13 +269,25 @@ export class ProjectManager {
                             let pageTaskTitleUpdate = pageTaskTitle
                             pageTaskTitleUpdate.innerHTML = `Task Name: ${editTaskTitleProjectInput.value}`
 
+                            let upcomingPageTaskTitleUpdate = upcomingPageTaskTitle
+                            upcomingPageTaskTitleUpdate.innerHTML = `Task Name: ${editTaskTitleProjectInput.value}`
+
                             let pageTaskDescriptionUpdate = pageTaskDescription
-                            pageTaskDescriptionUpdate.innerHTML = `Task Description: ${editTaskDescriptionProjectInput.value}`
+                            pageTaskDescriptionUpdate.innerHTML = `<b> Task Description </b>: ${editTaskDescriptionProjectInput.value}`
+
+                            let upcomingPageTaskDescriptionUpdate = upcomingPageTaskDescription
+                            upcomingPageTaskDescriptionUpdate.innerHTML = `Task Description: ${editTaskDescriptionProjectInput.value}`
 
                             let pageTaskDateUpdate = pageTaskDate
                             pageTaskDateUpdate.innerHTML = `Due Date: ${format(new Date(`'${editTaskDateProjectInput.value}'`), 'MMMM do yyyy')}`
 
+                            let upcomingPageTaskDateUpdate = upcomingPageTaskDate
+                            upcomingPageTaskDateUpdate.innerHTML = `Due Date: ${format(new Date(`'${editTaskDateProjectInput.value}'`), 'MMMM do yyyy')}`
+
                             datesControl(todaysDate, `'${editTaskDateProjectInput.value}'`, holdTheProject)
+                            datesControl(todaysDate, `'${editTaskDateProjectInput.value}'`, holdTheProjectUpcoming)
+
+                            upcomingTasksControl(todaysDate, `'${editTaskDateProjectInput.value}'`, holdTheProjectUpcoming)
 
                             editProjectTaskDisplay.close()
                         })
@@ -269,6 +300,9 @@ export class ProjectManager {
                     }
 
                     datesControl(todaysDate, `'${projectTaskDateInput.value}'`, holdTheProject)
+                    datesControl(todaysDate, `'${projectTaskDateInput.value}'`, holdTheProjectUpcoming)
+
+                    upcomingTasksControl(todaysDate, `'${projectTaskDateInput.value}'`, holdTheProjectUpcoming)
 
                 }
 
