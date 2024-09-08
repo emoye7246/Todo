@@ -114,6 +114,24 @@ function postTasks(){
     completedTask.innerHTML = 'Completed'
     completedTask.addEventListener('click', taskCompleted)
 
+    // Seperate
+    let storeMyTasks = document.getElementById('storeMyTasks')
+
+
+    let thisTaskToSend = document.createElement('button')
+    thisTaskToSend.innerHTML = `${taskTitleInput.value}`
+
+
+    let closeStoreMyTask = document.getElementById('closeStoreMyTask')
+
+    storeMyTasks.insertBefore(thisTaskToSend, closeStoreMyTask)
+
+
+    thisTaskToSend.addEventListener('click', myTaskStorage)
+
+
+    // seperate Finshed
+
     taskContent.append(taskSection)
 
     taskSection.append(placeTaskTitle, placeTaskDescription, placeTaskDate, buttonSection)
@@ -222,6 +240,7 @@ function postTasks(){
             editTask.remove()
             completedTask.remove()
             upcomingTask.remove()
+            thisTaskToSend.remove()
 
             taskSection.append(congratsMessgae)
             finishedTasks.append(taskSection)
@@ -242,6 +261,52 @@ function postTasks(){
         completedThisTask.append(question, buttonSeperation)
 
     }
+
+    function myTaskStorage(){
+
+        let storePlaceTask = document.getElementById('storePlaceTask')
+        let confirmMove = document.getElementById('confirmMove')
+        let seperateButtons = document.createElement('div')
+        seperateButtons.id = 'seperateButtons'
+
+        confirmMove.showModal()
+
+        let message = document.createElement('h3')
+        message.innerHTML = 'Are you sure you want to move this task'
+
+        let yesButton = document.createElement('button')
+        yesButton.innerHTML = 'Yes'
+
+        yesButton.addEventListener('click', () => {
+
+            storePlaceTask.append(taskSection)
+            thisTaskToSend.remove()
+            storeMyTasks.close()
+            confirmMove.close()
+
+        })
+
+        let noButton = document.createElement('button')
+        noButton.innerHTML = 'No'
+
+        noButton.addEventListener('click', () => {
+
+            storeMyTasks.close()
+            confirmMove.close()
+
+        })
+
+        seperateButtons.append(yesButton, noButton)
+        confirmMove.append(message, seperateButtons)
+
+
+
+
+        
+    }
+
+
+
 
 
     datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)

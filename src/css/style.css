@@ -236,7 +236,7 @@ text-align: center;
   height: 200px;
 }
 
-#buttonSeperation {
+#buttonSeperation, #pageButtons {
 
   display: flex;
   width: 400px;

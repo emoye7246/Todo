@@ -10,6 +10,10 @@ export class ProjectManager {
 
         let projectControl = document.getElementById('projectControl')
 
+        let myCompletedTask = document.getElementById('myCompletedTask')
+
+        let upcomingContent = document.getElementById('upcomingContent')
+
         let ProjectsContent = document.getElementById('ProjectsContent')
         ProjectsContent.style.display = 'flex'
         
@@ -72,6 +76,10 @@ export class ProjectManager {
 
                 upcomingContent.style.display = 'none'
 
+                myCompletedTask.style.display = 'none'
+
+                
+
 
                 ProjectsContent.innerHTML = ' '
 
@@ -95,6 +103,8 @@ export class ProjectManager {
 
                 let addExistingTasks = document.createElement('button')
                 addExistingTasks.innerHTML = 'Add Existing Task'
+
+                addExistingTasks.addEventListener('click', addPreviousTask)
 
                 let addNewTask = document.createElement('button')
                 addNewTask.innerHTML = 'Add New Task'
@@ -216,9 +226,13 @@ export class ProjectManager {
                     pageRemoveTask.type = 'button'
                     pageRemoveTask.innerHTML = 'Remove'
 
+                    let completed = document.createElement('button')
+                    completed.type = 'button'
+                    completed.innerHTML = 'Completed'
+
                     pageRemoveTask.addEventListener('click', removeTasks)
 
-                    pageButtons.append(pageEditTask, pageRemoveTask)
+                    pageButtons.append(pageRemoveTask, pageEditTask, completed)
                     holdTheProject.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
                     holdTheProjectUpcoming.append(upcomingPageTaskTitle, upcomingPageTaskDescription, upcomingPageTaskDate, upcomingTaskLocation)
                     storePlaceTasks.append(holdTheProject)
@@ -306,6 +320,13 @@ export class ProjectManager {
 
                 }
 
+
+            }
+
+            function addPreviousTask(){
+
+                let storeMyTasks = document.getElementById('storeMyTasks')
+                storeMyTasks.showModal()
 
             }
 

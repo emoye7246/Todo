@@ -14,6 +14,8 @@ let upcoming = document.getElementById('Upcoming')
 let upcomingContent = document.getElementById('upcomingContent')
 let Completed = document.getElementById('Completed')
 let myCompletedTask = document.getElementById('myCompletedTask')
+let closeStoreMyTask = document.getElementById('closeStoreMyTask')
+
 
 
 
@@ -95,4 +97,10 @@ Completed.addEventListener('click', () => {
 
 
 
+})
+
+closeStoreMyTask.innerHTML = 'close'
+closeStoreMyTask.addEventListener('click', () => {
+
+    storeMyTasks.close()
 })
