@@ -288,12 +288,29 @@ text-align: center;
   flex-direction: row;
 }
 
-/* #completedThisTask {
+#buttonBreak {
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-} */
+  margin-top: 20px;
+
+}
+
+#createTaskHeader, #editTaskHeader, #addProjectHeader, #projectTaskHeader{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#storeHere, #holderFor {
+
+  height: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
 
 

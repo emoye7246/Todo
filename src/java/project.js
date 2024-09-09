@@ -1,11 +1,13 @@
 import { format } from "date-fns";
 import { datesControl } from "./dates";
 import { upcomingTasksControl } from "./dates";
+import { storageAvailable } from "./storage";
 
 export class ProjectManager {
      
     static createProjectDialog(){
 
+       
         let todaysDate = new Date()
 
         let projectControl = document.getElementById('projectControl')
@@ -31,6 +33,13 @@ export class ProjectManager {
 
         projectControl.innerHTML = ' '
 
+        let StoreHere = document.createElement('div')
+        StoreHere.id = 'storeHere'
+
+        let addProjectHeader = document.createElement('h2')
+        addProjectHeader.innerHTML = 'Create A New Project'
+        addProjectHeader.id = 'addProjectHeader'
+
         let projectTitle = document.createElement('label')
         projectTitle.htmlFor = 'projectName'
         projectTitle.innerHTML = 'Name of Project'
@@ -45,6 +54,9 @@ export class ProjectManager {
         let projectDescriptionInput = document.createElement('input')
         projectDescriptionInput.id = 'descriptionProject'
 
+        let buttonBreak = document.createElement('div')
+        buttonBreak.id = 'buttonBreak'
+
         let closeProject = document.createElement('button')
         closeProject.innerHTML = 'Close'
 
@@ -53,7 +65,11 @@ export class ProjectManager {
             projectControl.close()
         })
 
-        projectControl.append(projectTitle, projectTitleInput, projectDescription, projectDescriptionInput, closeProject)
+        buttonBreak.append(closeProject)
+        StoreHere.append(addProjectHeader, projectTitle, projectTitleInput, projectDescription, projectDescriptionInput, buttonBreak)
+        projectControl.append(StoreHere)
+
+
 
         function postProject(){
 
@@ -73,6 +89,7 @@ export class ProjectManager {
 
             seperateProjects.append(showTitle, showTitleNotify)
             projects.append(seperateProjects)
+
 
 
             function projectShow(){
@@ -203,8 +220,10 @@ export class ProjectManager {
                 addTasktoProject.innerHTML = ' '
 
                 let holderFor = document.createElement('div')
+                holderFor.id = 'holderFor'
 
                 let projectTaskHeader = document.createElement('h2')
+                projectTaskHeader.id = 'projectTaskHeader'
                 projectTaskHeader.innerHTML = 'Add Task to Project'
 
                 let projectTaskTitle = document.createElement('label')
@@ -229,6 +248,9 @@ export class ProjectManager {
                 projectTaskDateInput.type = 'date'
                 projectTaskDateInput.id = 'projectTaskDate'
 
+                let buttonBreak = document.createElement('div')
+                buttonBreak.id = 'buttonBreak'
+
                 let closeAddTasktoProject = document.createElement('button')
                 closeAddTasktoProject.innerHTML = 'Close'
                 closeAddTasktoProject.type = 'button'
@@ -241,7 +263,8 @@ export class ProjectManager {
                 })
 
                 addTasktoProject.append(holderFor)
-                holderFor.append(projectTaskHeader, projectTaskTitle, projectTaskTitleInput, projectTaskDescription, projectTaskDescriptionInput, projectTaskDate, projectTaskDateInput, closeAddTasktoProject)
+                buttonBreak.append(closeAddTasktoProject)
+                holderFor.append(projectTaskHeader, projectTaskTitle, projectTaskTitleInput, projectTaskDescription, projectTaskDescriptionInput, projectTaskDate, projectTaskDateInput, buttonBreak)
 
 
 
@@ -470,5 +493,6 @@ export class ProjectManager {
     }
 
 }
+
 
 }

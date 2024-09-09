@@ -21,6 +21,7 @@ taskControl.innerHTML = ' '
 let getTask = document.createElement('div')
 
 let createTaskHeader = document.createElement('h2')
+createTaskHeader.id = 'createTaskHeader'
 createTaskHeader.innerHTML = 'Create a Task'
 
 
@@ -50,6 +51,8 @@ taskDateInput.type = 'date'
 
 let todaysDate = new Date()
 
+let buttonBreak = document.createElement('div')
+buttonBreak.id = 'buttonBreak'
 
 let closeTasks = document.createElement('button')
 closeTasks.type = 'button'
@@ -63,7 +66,8 @@ closeTasks.addEventListener('click', () => {
 })
 
 taskControl.append(getTask)
-getTask.append(createTaskHeader, taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeTasks)
+buttonBreak.append(closeTasks)
+getTask.append(createTaskHeader, taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, buttonBreak)
 
 // Module Part two
 
@@ -167,6 +171,10 @@ function postTasks(){
        editTaskDisplay.showModal()
 
        editTaskDisplay.innerHTML = ' '
+
+       let editTaskHeader = document.createElement('h2')
+       editTaskHeader.innerHTML = 'Edit This Task'
+       editTaskHeader.id = 'editTaskHeader'
         
        let editTaskTitle = document.createElement('label')
        editTaskTitle.htmlFor = 'editTask'
@@ -191,9 +199,13 @@ function postTasks(){
        editTaskDateI.id = 'editDate'
        editTaskDateI.type = 'date'
 
+       let buttonBreak = document.createElement('div')
+       buttonBreak.id = 'buttonBreak'
+
        let closeEdit = document.createElement('button')
        closeEdit.type = 'button'
        closeEdit.innerHTML = 'Close'
+       closeEdit.id = 'closeEdit'
 
        closeEdit.addEventListener('click', () => {
         let titleEdit = placeTaskTitle
@@ -221,7 +233,8 @@ function postTasks(){
         editTaskDisplay.close()
        })
 
-       editTaskDisplay.append(editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, closeEdit)
+       buttonBreak.append(closeEdit)
+       editTaskDisplay.append(editTaskHeader, editTaskTitle, editTaskTitleI, editTaskDescription, editTaskDescriptionI, editTaskDate, editTaskDateI, buttonBreak)
     }
     // Yes that would work
 
