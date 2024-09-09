@@ -57,15 +57,22 @@ export class ProjectManager {
 
         function postProject(){
 
-            let projects = document.getElementById('projects')
-
+            let seperateProjects = document.createElement('div')
+            seperateProjects.id = 'seperateProjects'
+            
             let showTitle = document.createElement('div')
             showTitle.id = 'showTitle'
             showTitle.innerHTML = `${projectTitleInput.value}`
 
+            let showTitleNotify = document.createElement('div')
+            showTitleNotify.id = 'showTitleNotify'
+
             showTitle.addEventListener('click', projectShow)
 
-            projects.append(showTitle)
+        
+
+            seperateProjects.append(showTitle, showTitleNotify)
+            projects.append(seperateProjects)
 
 
             function projectShow(){
@@ -77,6 +84,8 @@ export class ProjectManager {
                 upcomingContent.style.display = 'none'
 
                 myCompletedTask.style.display = 'none'
+
+                showTitleNotify.style.display = 'none'
 
                 
 
@@ -103,19 +112,24 @@ export class ProjectManager {
 
                 let addExistingTasks = document.createElement('button')
                 addExistingTasks.innerHTML = 'Add Existing Task'
-
                 addExistingTasks.addEventListener('click', addPreviousTask)
 
                 let addNewTask = document.createElement('button')
                 addNewTask.innerHTML = 'Add New Task'
+                addNewTask.addEventListener('click', addTheTask)
+
 
                 let removeProject = document.createElement('button')
                 removeProject.innerHTML = 'Delete Project'
 
+                removeProject.addEventListener('click', removeThisProject)
+
                 let editProject = document.createElement('button')
                 editProject.innerHTML = 'Edit Project'
 
-                addNewTask.addEventListener('click', addTheTask)
+                editProject.addEventListener('click', editThisProject)
+
+
 
 
 
@@ -124,6 +138,58 @@ export class ProjectManager {
                 storePlaceElements.append(placeElements)
                 buttonSeperate.append(addExistingTasks, addNewTask, editProject, removeProject)
                 placeElements.append(displayProjectTitle, displayProjectDescription, buttonSeperate)
+
+
+                
+                function removeThisProject(){
+                    
+                    storePlaceElements.remove()
+                    showTitle.remove()
+                }
+
+                function editThisProject(){
+                    let editThisProjects = document.getElementById('editThisProjects')
+
+                    editThisProjects.showModal()
+
+                    editThisProjects.innerHTML = ' '
+
+                    let editProjectsTitle = document.createElement('label')
+                    editProjectsTitle.htmlFor = 'editProjectsTitle'
+                    editProjectsTitle.innerHTML = 'Project Name'
+
+
+                    let editProjectsTitleInput = document.createElement('input')
+                    editProjectsTitleInput.id = 'editProjectsTitle'
+
+                    let editProjectsDescription = document.createElement('label')
+                    editProjectsDescription.htmlFor = 'editProjectsDescription'
+                    editProjectsDescription.innerHTML = 'Projects Description'
+
+                    let editProjectsDescriptionInput = document.createElement('input')
+                    editProjectsDescriptionInput.id = 'editProjectsDescription'
+
+                    let closeEditProjects = document.createElement('button')
+                    closeEditProjects.type = 'button'
+                    closeEditProjects.innerHTML = 'Close'
+
+                    closeEditProjects.addEventListener('click', () => {
+
+                        let newProjectTitle = displayProjectTitle
+                        newProjectTitle.innerHTML = `${editProjectsTitleInput.value}`
+
+                        let newProjectDescription = displayProjectDescription
+                        newProjectDescription.innerHTML = `${editProjectsDescriptionInput.value}`
+
+                        showTitle.innerHTML = `${editProjectsTitleInput.value}`
+
+                        editThisProjects.close()
+
+                    })
+
+                    editThisProjects.append(editProjectsTitle, editProjectsTitleInput, editProjectsDescription, editProjectsDescriptionInput, closeEditProjects)
+                }
+
 
 
 
@@ -226,11 +292,24 @@ export class ProjectManager {
                     pageRemoveTask.type = 'button'
                     pageRemoveTask.innerHTML = 'Remove'
 
+                    pageRemoveTask.addEventListener('click', removeTasks)
+                    
+
                     let completed = document.createElement('button')
                     completed.type = 'button'
                     completed.innerHTML = 'Completed'
 
-                    pageRemoveTask.addEventListener('click', removeTasks)
+                    completed.addEventListener('click', completedThisTask)
+
+
+                    let myIcons = document.getElementById('myIcons')
+                    myIcons.innerHTML = ' '
+
+                    let upcomingProjectst = document.createElement('div')
+                    upcomingProjectst.id = 'upcomingProjectst'
+
+                    myIcons.append(upcomingProjectst)
+
 
                     pageButtons.append(pageRemoveTask, pageEditTask, completed)
                     holdTheProject.append(pageTaskHeader, pageTaskTitle, pageTaskDescription, pageTaskDate, pageButtons)
@@ -311,6 +390,62 @@ export class ProjectManager {
 
                     function removeTasks(){
                         holdTheProject.remove()
+                    }
+
+                    function completedThisTask(){
+
+                        let completedThisTask = document.getElementById('completedThisTask')
+
+                        completedThisTask.showModal()
+
+                        completedThisTask.innerHTML = ' '
+
+                        let questionProject = document.createElement('h2')
+                        questionProject.innerHTML = 'Has this task been Completed'
+
+                        let buttonSeperationProject = document.createElement('div')
+                        buttonSeperationProject.id = 'buttonSeperationProject'
+
+                        let yesProject = document.createElement('button')
+                        yesProject.innerHTML = 'Yes'
+
+                        yesProject.addEventListener('click', () => {
+                            let finishedTasksProject = document.getElementById('finishedTasks')
+
+                            let congratsMessgaeProject = document.createElement('div')
+                            congratsMessgaeProject.innerHTML = '<b>Congrats You Have completed this task keep going</b>'
+
+                            pageRemoveTask.remove()
+                            completed.remove()
+                            pageEditTask.remove()
+                            holdTheProjectUpcoming.remove()
+
+                            holdTheProject.append(congratsMessgaeProject)
+                            finishedTasksProject.append(holdTheProject)
+                            holdTheProject.style.border = '1px solid green'
+
+                            let myIconsComplete = document.getElementById('myIconsComplete')
+                            myIconsComplete.innerHTML = ' '
+
+                            let completedProjectNotify = document.createElement('div')
+                            completedProjectNotify.id = 'completedProjectNotify'
+
+                            myIconsComplete.append(completedProjectNotify)
+
+                            completedThisTask.close()
+                        })
+
+                        let noProject = document.createElement('button')
+                        noProject.innerHTML = 'No'
+
+                        noProject.addEventListener('click', () => {
+                            completedThisTask.close()
+                        })
+
+                        buttonSeperationProject.append(yesProject, noProject)
+                        completedThisTask.append(questionProject, buttonSeperationProject)
+
+
                     }
 
                     datesControl(todaysDate, `'${projectTaskDateInput.value}'`, holdTheProject)

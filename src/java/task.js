@@ -99,6 +99,18 @@ function postTasks(){
 
     let upcomingPlaceTaskDate = document.createElement('div')
     upcomingPlaceTaskDate.innerHTML =` Due Date: ${format(new Date(`'${taskDateInput.value}'`), 'MMMM do yyyy')}`
+    
+
+
+    let myIcons = document.getElementById('myIcons')
+    myIcons.innerHTML = ' '
+
+    let myIconsNotify = document.createElement('div')
+    myIconsNotify.id = 'myIconsNotify'
+
+    myIcons.append(myIconsNotify)
+    
+
 
 
 
@@ -113,6 +125,8 @@ function postTasks(){
     let completedTask = document.createElement('button')
     completedTask.innerHTML = 'Completed'
     completedTask.addEventListener('click', taskCompleted)
+
+    
 
     // Seperate
     let storeMyTasks = document.getElementById('storeMyTasks')
@@ -234,6 +248,12 @@ function postTasks(){
             let congratsMessgae = document.createElement('div')
             congratsMessgae.innerHTML = '<b>Congrats You Have completed this task keep going</b>'
 
+            let myIconsComplete = document.getElementById('myIconsComplete')
+            myIconsComplete.innerHTML = ' '
+
+            let completeNotify = document.createElement('div')
+            completeNotify.id = 'completeNotify'
+
 
 
             removeTask.remove()
@@ -242,11 +262,14 @@ function postTasks(){
             upcomingTask.remove()
             thisTaskToSend.remove()
 
+
             taskSection.append(congratsMessgae)
             finishedTasks.append(taskSection)
             taskSection.style.border = '1px solid green'
 
             completedThisTask.close()
+
+            myIconsComplete.append(completeNotify)
         })
 
         let no = document.createElement('button')
@@ -270,6 +293,8 @@ function postTasks(){
         seperateButtons.id = 'seperateButtons'
 
         confirmMove.showModal()
+
+        confirmMove.innerHTML = ''
 
         let message = document.createElement('h3')
         message.innerHTML = 'Are you sure you want to move this task'

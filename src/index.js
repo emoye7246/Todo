@@ -15,6 +15,9 @@ let upcomingContent = document.getElementById('upcomingContent')
 let Completed = document.getElementById('Completed')
 let myCompletedTask = document.getElementById('myCompletedTask')
 let closeStoreMyTask = document.getElementById('closeStoreMyTask')
+let myIcons = document.getElementById('myIcons')
+let myIconsComplete = document.getElementById('myIconsComplete')
+
 
 
 
@@ -81,6 +84,12 @@ upcoming.addEventListener('click', () => {
     ProjectsContent.style.display = 'none'
     myCompletedTask.style.display = 'none'
 
+    myIcons.innerHTML = ' '
+
+
+
+
+
 
 
 
@@ -94,6 +103,8 @@ Completed.addEventListener('click', () => {
     upcomingContent.style.display = 'none'
     taskContent.style.display = 'none'
     ProjectsContent.style.display = 'none'
+
+    myIconsComplete.innerHTML = ' '
 
 
 
