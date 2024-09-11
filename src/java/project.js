@@ -3,7 +3,10 @@ import { datesControl } from "./dates";
 import { upcomingTasksControl } from "./dates";
 import { storageAvailable } from "./storage";
 
+
 export class ProjectManager {
+
+
      
     static createProjectDialog(){
 
@@ -82,6 +85,8 @@ export class ProjectManager {
 
             let showTitleNotify = document.createElement('div')
             showTitleNotify.id = 'showTitleNotify'
+
+            
 
             showTitle.addEventListener('click', projectShow)
 
@@ -487,12 +492,11 @@ export class ProjectManager {
                 storeMyTasks.showModal()
 
             }
-
+            
             // Here lies the issue
 
     }
 
 }
-
 
 }

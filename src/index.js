@@ -2,7 +2,6 @@ import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import {ProjectManager} from '/Users/elijahmoye/Desktop/todo/Todo/src/java/project.js'
 import { TaskControl } from './java/task';
-import { storageAvailable } from './java/storage';
 
 let Welcome = document.getElementById('Welcome')
 let Home = document.getElementById('Home')
@@ -18,10 +17,6 @@ let myCompletedTask = document.getElementById('myCompletedTask')
 let closeStoreMyTask = document.getElementById('closeStoreMyTask')
 let myIcons = document.getElementById('myIcons')
 let myIconsComplete = document.getElementById('myIconsComplete')
-let testStorage = document.getElementById('testStorage')
-
-
-
 
 
 Home.addEventListener('click', () => {
@@ -88,13 +83,6 @@ upcoming.addEventListener('click', () => {
 
     myIcons.innerHTML = ' '
 
-
-
-
-
-
-
-
 })
 
 Completed.addEventListener('click', () => {
@@ -108,8 +96,6 @@ Completed.addEventListener('click', () => {
 
     myIconsComplete.innerHTML = ' '
 
-
-
 })
 
 closeStoreMyTask.innerHTML = 'close'
@@ -117,4 +103,5 @@ closeStoreMyTask.addEventListener('click', () => {
 
     storeMyTasks.close()
 })
+
 

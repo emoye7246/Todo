@@ -84,9 +84,11 @@ function postTasks(){
     let buttonSection = document.createElement('div')
     buttonSection.id = 'buttonSection'
 
+    
 
     let placeTaskTitle = document.createElement('div')
     placeTaskTitle.innerHTML = `Task Name: ${taskTitleInput.value}`
+
 
     let upcomingPlaceTaskTitle = document.createElement('div')
     upcomingPlaceTaskTitle.innerHTML = `Task Name: ${taskTitleInput.value}`
@@ -114,8 +116,6 @@ function postTasks(){
 
     myIcons.append(myIconsNotify)
     
-
-
 
 
     let removeTask = document.createElement('button')
@@ -157,6 +157,8 @@ function postTasks(){
     upcomingTask.append(upcomingPlaceTaskTitle, upcomingPlaceTaskDescription, upcomingPlaceTaskDate)
 
     buttonSection.append(removeTask, editTask, completedTask)
+
+    console.log(taskContent)
 
     function remove(){
         taskSection.remove()
@@ -344,8 +346,7 @@ function postTasks(){
     }
 
 
-
-
+   
 
     datesControl(todaysDate, `'${taskDateInput.value}'`, taskSection)
 

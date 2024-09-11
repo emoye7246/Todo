@@ -19,3 +19,24 @@ export function storageAvailable(type) {
 
 
 
+// if(!localStorage.getItem('myDay')){
+//     getDay()
+// }
+// else{
+//     runday()
+// }
+
+
+// function getDay(){
+
+//     localStorage.setItem('myDay', console.log('helL NAH'))
+
+//     runday()
+// }
+
+// function runday(){
+
+//     console.log('heyoo')
+//     console.log('hello')
+//     console.log('Yep it sTAYED')
+// }
