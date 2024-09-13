@@ -98,6 +98,17 @@ body{
 }
 
 
+#taskContent {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 400px;
+  justify-content: space-between;
+  height: 200px;
+  align-items: flex-start;
+}
+
 
 
 
