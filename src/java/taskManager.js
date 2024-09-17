@@ -1,5 +1,7 @@
-let content = document.getElementById('content')
+import { createTaskDisplay } from "../newTask"
 
+let content = document.getElementById('content')
+let myTasks = []
 
 
 export class TaskManager {
@@ -10,9 +12,10 @@ export class TaskManager {
         this.titleDescription = titleDescription, 
         this.titleDate = titleDate
 
+
     }
 
-    getTaskInfo(){
+  getTaskInfo(){
 
         let userInput = document.getElementById('userInput')
         userInput.innerHTML = ''
@@ -51,10 +54,12 @@ export class TaskManager {
     
            this.titleDescription = taskDescriptionInput.value
     
-           this.titleDate = taskDateInput.value    
-    
-           this.postTask()
-    
+           this.titleDate = taskDateInput.value   
+
+           
+           this.createMyTask()
+
+
             userInput.close()
         })
         
@@ -64,39 +69,48 @@ export class TaskManager {
         
         }
 
-
-    postTask(){
-                        
-
-            let userTitle = document.createElement('div')
-            userTitle.innerHTML = `Task Name : ${this.titleInput}`
-
-           
-            content.append(userTitle)
-
-            this.storeMyTask()
-
-    }
-
-    storeMyTask(){
-
-        let myTask = []
-
-        content.querySelectorAll('div').forEach(function(element){
-
-            myTask.push(element.innerHTML)
-
-            localStorage.setItem('task', JSON.stringify(myTask))
-
-
-        })
-
-        console.log(myTask)
-
+        createMyTask() {
     
+            
+             let createTask = {
+         
+             TaskName: `${this.titleInput}`, 
+         
+             TaskDescription: `${this.titleDescription}`, 
+         
+             TaskDate: `${this.titleDate}`
+            }
+            
+            
+            this.storeMyTask(createTask)
 
+           createTaskDisplay(createTask.TaskName, createTask.TaskDescription, createTask.TaskDate)
+            
+         
+        }
+
+        storeMyTask(object){
+
+
+            myTasks.push(object)
+            localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+        }
         
-    }
+        loadMyTask(){
+
+           let hello = JSON.parse(localStorage.getItem('tasks')) || []
+
+           hello.forEach((element) => {
+
+           this.storeMyTask(element)
+
+           createTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate)
+
+
+           })
+        }
 
 }
 // ok
+new TaskManager().loadMyTask()
