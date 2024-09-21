@@ -1,7 +1,7 @@
 import { createTaskDisplay } from "../newTask"
 
 let content = document.getElementById('content')
-let myTasks = []
+export let myTasks = []
 
 
 export class TaskManager {
@@ -21,6 +21,9 @@ export class TaskManager {
         userInput.innerHTML = ''
     
         userInput.showModal()
+
+        let userInputDiv = document.createElement('div')
+        userInputDiv.id = 'userInputDiv'
     
         let taskTitle = document.createElement('label')
         taskTitle.htmlFor = 'taskTitle'
@@ -64,7 +67,9 @@ export class TaskManager {
         })
         
     
-        userInput.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        userInputDiv.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        userInput.append(userInputDiv)
+
     
         
         }
@@ -78,21 +83,24 @@ export class TaskManager {
          
              TaskDescription: `${this.titleDescription}`, 
          
-             TaskDate: `${this.titleDate}`
+             TaskDate: `${this.titleDate}`, 
+
+             id: Math.random()
             }
-            
+
+        
             
             this.storeMyTask(createTask)
 
-           createTaskDisplay(createTask.TaskName, createTask.TaskDescription, createTask.TaskDate)
+           createTaskDisplay(createTask.TaskName, createTask.TaskDescription, createTask.TaskDate, createTask)
             
-         
+            
         }
+        
 
         storeMyTask(object){
 
-
-            myTasks.push(object)
+            myTasks.push(object) 
             localStorage.setItem('tasks', JSON.stringify(myTasks))
 
         }
@@ -105,12 +113,10 @@ export class TaskManager {
 
            this.storeMyTask(element)
 
-           createTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate)
-
+           createTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate, element)
 
            })
         }
-
 }
 // ok
 new TaskManager().loadMyTask()
