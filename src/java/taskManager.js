@@ -59,6 +59,9 @@ export class TaskManager {
     
            this.titleDate = taskDateInput.value   
 
+           let Welcome = document.getElementById('Welcome')
+
+           Welcome.innerHTML = 'Your Tasks'
            
            this.createMyTask()
 

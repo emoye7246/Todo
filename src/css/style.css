@@ -133,7 +133,7 @@ body{
 }
 
 
-#userInputDiv {
+#userInputDiv, #projectDiv {
 
   display: flex;
   flex-direction: column;
@@ -151,7 +151,23 @@ body{
 }
 
 
+#showBox {
 
+  border: 1px solid black;
+  border-radius: 12px;
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+#showBox:hover {
+
+  color: red;
+  cursor: pointer;
+}
 
 
 /* CSS */
