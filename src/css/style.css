@@ -97,16 +97,10 @@ body{
   color: red;
 }
 
-
 #taskContent {
+
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 400px;
-  justify-content: space-between;
-  height: 200px;
-  align-items: flex-start;
 }
 
 #content{ 
@@ -125,6 +119,17 @@ body{
   border: 1px solid black;
   border-radius: 22px;
   margin-bottom: 30px;
+}
+
+#storeProjectElements {
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  justify-content: space-evenly;
+
 }
 
 #userInput { 

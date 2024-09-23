@@ -1,9 +1,17 @@
 import { myTasks } from "./java/taskManager"
 import { format} from "date-fns";
 
+export let taskContent = document.getElementById('taskContent')
+import { projectContent } from "./java/newProjects";
+
+
 let content = document.getElementById('content')
 
 export function createTaskDisplay(userTitle, userDescription, userDate, object){
+
+    taskContent.style.display = 'flex'
+
+    projectContent.style.display = ' none'
 
     let storeTaskElements = document.createElement('div')
     storeTaskElements.id = 'storeTaskElements'
@@ -36,7 +44,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     buttonSection.append(editButton, removeButton, moveTo)
     storeTaskElements.append(taskTitle, taskDescription, taskDate, buttonSection)
-    content.append(storeTaskElements)
+    taskContent.append(storeTaskElements)
 
     function removeButtons(){
 

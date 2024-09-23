@@ -1,5 +1,8 @@
+import { showProject } from "./newProjects"
+
 let projects = document.getElementById('projects')
 let myProjects = []
+
 
 export class ProjectManager{
 
@@ -46,7 +49,7 @@ export class ProjectManager{
 
             this.projectDescriptions = projectDescriptionInput.value
              
-            this.postTask(this.projectTitles)
+            this.createMyProject()
             
             userInput.close()
         })
@@ -55,16 +58,45 @@ export class ProjectManager{
         userInput.append(projectDiv)
     }
 
-    postTask(title){
+    createMyProject(){
 
 
-        let showProjectBox = document.createElement('div')
-        showProjectBox.id = 'showBox'
+        let myProjectObject = {
 
-        showProjectBox.innerHTML = `${title}`
+            projectName: `${this.projectTitles}`, 
 
-        projects.append(showProjectBox)
+            projectDescriptionName: `${this.projectDescriptions}`,
+
+            id: Math.random()
+
+        }
+
+        this.saveTask(myProjectObject)
+
+        showProject(myProjectObject.projectName, myProjectObject.projectDescriptionName)
+
+    }
+
+    saveTask(object){
+
+        myProjects.push(object)
+        localStorage.setItem('projects', JSON.stringify(myProjects))
+        
+    }
+
+    loadMyTask(){
+
+        let myProjectsLoad = JSON.parse(localStorage.getItem('projects')) || []
+
+        myProjectsLoad.forEach((element) => {
+
+            this.saveTask(element)
+
+            showProject(element.projectName, element.projectDescriptionName)
+        })
     }
 
 
 }
+
+new ProjectManager().loadMyTask()
