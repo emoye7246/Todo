@@ -34,10 +34,10 @@ export function createProjectDisplay(userTitle, userDescription){
     storeProjectElements.id = 'storeProjectElements'
 
     let projectTitle = document.createElement('div')
-    projectTitle.innerHTML = `${userTitle}`
+    projectTitle.innerHTML = `<b> Project Name: </b>${userTitle}`
 
     let projectDescription = document.createElement('div')
-    projectDescription.innerHTML = `${userDescription}`
+    projectDescription.innerHTML = `<b> Project Description: </b> ${userDescription}`
 
     let buttonSection = document.createElement('div')
     buttonSection.id = 'buttonSection'
@@ -69,6 +69,9 @@ export function createProjectDisplay(userTitle, userDescription){
 
         userInput.showModal()
 
+        let taskHolders = document.createElement('div')
+        taskHolders.id = 'taskHolders'
+
         let taskTitle = document.createElement('label')
         taskTitle.innerHTML = 'Name of Task:'
         taskTitle.htmlFor = 'taskTitle'
@@ -97,12 +100,28 @@ export function createProjectDisplay(userTitle, userDescription){
 
         closeButton.addEventListener('click', () => {
 
+            myProjectTasks(taskTitleInput.value)
+
             userInput.close()
         })
 
 
-        userInput.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        taskHolders.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        userInput.append(taskHolders)
 
+    }
+
+    function myProjectTasks(inputTitle, inputDescription, inputDate){
+
+        let taskProjects = document.createElement('div')
+
+        let taskTitle = document.createElement('div')
+        taskTitle.innerHTML = `${inputTitle}`
+
+
+        taskProjects.append(taskTitle)
+        projectContent.append(taskProjects)
+        
     }
 
 }
