@@ -2,7 +2,6 @@ import { myTasks } from "./java/taskManager"
 import { format} from "date-fns";
 
 export let taskContent = document.getElementById('taskContent')
-import { projectContent } from "./java/newProjects";
 
 
 let content = document.getElementById('content')

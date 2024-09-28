@@ -121,7 +121,7 @@ body{
   margin-bottom: 30px;
 }
 
-#storeProjectElements {
+#myProjectsDisplay {
 
 
   display: flex;
@@ -156,7 +156,7 @@ body{
 }
 
 
-#showBox {
+#showProjectDiv {
 
   border: 1px solid black;
   border-radius: 12px;
@@ -168,7 +168,7 @@ body{
   justify-content: center;
 }
 
-#showBox:hover {
+#showProjectDiv:hover {
 
   color: red;
   cursor: pointer;

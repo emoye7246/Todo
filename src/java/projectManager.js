@@ -1,7 +1,7 @@
-import { showProject } from "./newProjects"
 
-let projects = document.getElementById('projects')
-let myProjects = []
+import { projectController } from "./newProjects"
+
+export let myProjects = []
 
 
 export class ProjectManager{
@@ -67,13 +67,18 @@ export class ProjectManager{
 
             projectDescriptionName: `${this.projectDescriptions}`,
 
-            id: Math.random()
+            id: Math.random(),
+
+            taskProjects: []
 
         }
 
+        
+
         this.saveTask(myProjectObject)
 
-        showProject(myProjectObject.projectName, myProjectObject.projectDescriptionName)
+        new projectController(myProjectObject).showProject()
+
 
     }
 
@@ -92,7 +97,9 @@ export class ProjectManager{
 
             this.saveTask(element)
 
-            showProject(element.projectName, element.projectDescriptionName)
+            new projectController(element).showProject()
+
+
         })
     }
 
