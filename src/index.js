@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
-import { TaskManager } from './java/taskManager';
-import { ProjectManager } from './java/projectManager';
-import { myTasks } from './java/taskManager';
-import { taskContent } from './newTask';
+import { TaskManager } from './java/Task/taskManager';
+import { ProjectManager } from './java/projects/projectManager';
+import { myTasks } from './java/Task/taskManager';
+import { taskContent } from './java/Task/newTask';
 
 let addTask = document.getElementById('addTask')
 let Welcome = document.getElementById('Welcome')

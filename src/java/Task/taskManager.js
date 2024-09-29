@@ -1,4 +1,5 @@
-import { createTaskDisplay } from "../newTask"
+import { createTaskDisplay } from "./newTask"
+
 
 let content = document.getElementById('content')
 export let myTasks = []

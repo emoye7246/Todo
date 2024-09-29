@@ -1,4 +1,4 @@
-import { myTasks } from "./java/taskManager"
+import { myTasks } from "./taskManager";
 import { format} from "date-fns";
 
 export let taskContent = document.getElementById('taskContent')

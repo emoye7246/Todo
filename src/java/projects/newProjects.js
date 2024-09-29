@@ -1,4 +1,8 @@
 import { myProjects } from "./projectManager"
+import { myProjectsTasks } from "./task_Projects"
+
+let projectContent = document.getElementById('projectContent')
+
 
 export class projectController{
 
@@ -26,7 +30,6 @@ export class projectController{
     displayProject(){
 
 
-        let projectContent = document.getElementById('projectContent')
 
         projectContent.style.display = 'flex'
 
@@ -68,6 +71,17 @@ export class projectController{
         projectContent.append(myProjectsDisplay)
         
 
+        
+        this.showTask()
+
+    }
+
+    showTask(){
+
+        this.object.taskProjects.forEach((element) => {
+
+            myProjectsTasks(element.taskNames, element.taskDescriptions, element.taskDates, projectContent)
+        })
     }
 
     createTheTask(){
