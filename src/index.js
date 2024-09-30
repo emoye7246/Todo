@@ -5,16 +5,20 @@ import { ProjectManager } from './java/projects/projectManager';
 import { myTasks } from './java/Task/taskManager';
 import { taskContent } from './java/Task/newTask';
 
+import { dateControl } from './java/date';
+
 let addTask = document.getElementById('addTask')
 let Welcome = document.getElementById('Welcome')
 let Home = document.getElementById('Home')
 let addProject = document.getElementById('addProject')
 let projects = document.getElementById('projects')
+let projectContent = document.getElementById('projectContent')
 
 addTask.addEventListener('click', () => {
 
     Welcome.innerHTML = 'Your Task'
     taskContent.style.display = 'flex'
+    projectContent.style.display = 'none'
     new TaskManager().getTaskInfo()
 
 })
@@ -23,6 +27,8 @@ Home.addEventListener('click', () => {
 
     Welcome.innerHTML = 'Your Tasks'
     taskContent.style.display = 'flex'
+    projectContent.style.display = 'none'
+
 
 
 })
@@ -31,6 +37,8 @@ addProject.addEventListener('click', () => {
 
     new ProjectManager().getProjectInfo()
     Welcome.innerHTML = 'Your Projects'
+    taskContent.style.display = 'none'
+    projectContent.style.display = 'flex'
 
 
 })
@@ -39,6 +47,9 @@ projects.addEventListener('click', () => {
 
     Welcome.innerHTML = 'Your Projects'
     taskContent.style.display = 'none'
+    projectContent.style.display = 'flex'
+
+
 
 
 })
@@ -51,3 +62,4 @@ localStorageClear.addEventListener('click', () => {
     localStorage.clear()
 })
 console.log(myTasks)
+

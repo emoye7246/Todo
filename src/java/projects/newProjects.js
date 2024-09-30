@@ -136,7 +136,7 @@ export class projectController{
 
             localStorage.setItem('projects', JSON.stringify(myProjects))
 
-            this.displayTasks(newTaskP.taskNames, newTaskP.taskDescriptions, newTaskP.taskDates)
+            myProjectsTasks(newTaskP.taskNames, newTaskP.taskDescriptions, newTaskP.taskDates, projectContent)
 
             userInput.close()
         })
@@ -146,27 +146,6 @@ export class projectController{
 
     }
 
-
-    displayTasks(projectTitle, projectDescription, projectDate){
-
-        let projectContent = document.getElementById('projectContent')
-
-        let holder = document.createElement('div')
-
-        let displayProjectTitle = document.createElement('div')
-        displayProjectTitle.innerHTML = `${projectTitle}`
-
-        let displayProjectDescription = document.createElement('div')
-        displayProjectDescription.innerHTML = `${projectDescription}`
-
-        let displayDate = document.createElement('div')
-        displayDate.innerHTML = `${projectDate}`
-
-        holder.append(displayProjectTitle, displayProjectDescription, displayDate)
-        projectContent.append(holder)
-
-        
-    }
 
 
 }

@@ -1,3 +1,4 @@
+import { dateControl } from "../date";
 import { myTasks } from "./taskManager";
 import { format} from "date-fns";
 
@@ -29,19 +30,27 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     let editButton = document.createElement('button')
     editButton.innerHTML = 'Edit'
-
     editButton.addEventListener('click', editTask)
 
     let removeButton = document.createElement('button')
     removeButton.innerHTML = 'Remove'
-
     removeButton.addEventListener('click', removeButtons)
 
     let moveTo = document.createElement('button')
     moveTo.innerHTML = 'Move'
 
+    let completedButton = document.createElement('button')
+    completedButton.innerHTML = 'Completed'
+    completedButton.type = 'button'
 
-    buttonSection.append(editButton, removeButton, moveTo)
+    let todaysDate = `'${new Date()}'`
+
+    let dateInputed = `'${userDate}'`
+
+    dateControl(todaysDate, dateInputed, storeTaskElements)
+
+
+    buttonSection.append(editButton, removeButton, moveTo, completedButton)
     storeTaskElements.append(taskTitle, taskDescription, taskDate, buttonSection)
     taskContent.append(storeTaskElements)
 
@@ -109,6 +118,8 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
             taskTitle.innerHTML = `Task Name: ${object.TaskName}`
             taskDescription.innerHTML = `Task Description: ${object.TaskDescription}`
             taskDate.innerHTML = `Task Due: ${format(new Date(`'${object.TaskDate}'`), 'MMMM do yyyy')}`
+
+            dateControl(todaysDate, object.TaskDate, storeTaskElements)
 
             localStorage.setItem('tasks', JSON.stringify(myTasks))
 

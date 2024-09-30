@@ -1,15 +1,22 @@
 import { addWeeks } from "date-fns"
-import { format } from "date-fns"
+import { format, differenceInCalendarDays } from "date-fns"
 
-export function dateControl(){
-
-    let dates = new Date('09/18/2007')
-    let weeks = addWeeks(dates, 1)
-    const see = format(new Date(dates), 'MM/dd/yyyy')
+export function dateControl(todaysDate, dateInputed, border){
 
 
+let result = differenceInCalendarDays(dateInputed, todaysDate)
 
-    console.log(dates)
+if(result <= 8){
+
+    border.style.border = '1px solid red'
+}
+else if (result >= 8){
+
+    border.style.border = '1px solid green'
+
+}
+
+console.log(result)
 }
 
 // Go work on some c# man come back later 
