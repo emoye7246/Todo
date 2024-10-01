@@ -18,6 +18,4 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section){
         hold.append(placeTitle, placeDescription, placeDate)
         section.append(hold)
 
-
-
 }

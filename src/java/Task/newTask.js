@@ -1,5 +1,6 @@
 import { dateControl } from "../date";
 import { myTasks } from "./taskManager";
+import { completed } from "./taskManager";
 import { format} from "date-fns";
 
 export let taskContent = document.getElementById('taskContent')
@@ -36,12 +37,14 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
     removeButton.innerHTML = 'Remove'
     removeButton.addEventListener('click', removeButtons)
 
-    let moveTo = document.createElement('button')
-    moveTo.innerHTML = 'Move'
-
     let completedButton = document.createElement('button')
     completedButton.innerHTML = 'Completed'
     completedButton.type = 'button'
+
+    completedButton.addEventListener('click', () => {
+
+        completeTask(object)
+    })
 
     let todaysDate = `'${new Date()}'`
 
@@ -50,19 +53,44 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
     dateControl(todaysDate, dateInputed, storeTaskElements)
 
 
-    buttonSection.append(editButton, removeButton, moveTo, completedButton)
+    buttonSection.append(editButton, removeButton, completedButton)
     storeTaskElements.append(taskTitle, taskDescription, taskDate, buttonSection)
     taskContent.append(storeTaskElements)
+
+
+    // Upcoming
+
+    let UpcomingTasks = document.getElementById('UpcomingTasks')
+
+    let storeUpcoming = document.createElement('div')
+    storeUpcoming.id = 'storeUpcoming'
+    
+    let upcomingTitle = document.createElement('div')
+    upcomingTitle.innerHTML = `Task Name: ${userTitle}`
+    
+    let upcomingDescription = document.createElement('div')
+    upcomingDescription.innerHTML = `Task Description: ${userDescription}`
+    
+    let upcomingDate = document.createElement('div')
+    upcomingDate.innerHTML = `Task Due: ${format(new Date(`'${userDate}'`), 'MMMM do yyyy')}`
+
+    dateControl(todaysDate, dateInputed, storeUpcoming)
+    
+    storeUpcoming.append(upcomingTitle, upcomingDescription, upcomingDate)
+    UpcomingTasks.append(storeUpcoming)
+
 
     function removeButtons(){
 
         storeTaskElements.remove()
+        storeUpcoming.remove()
 
         if(myTasks.indexOf(object) == myTasks.indexOf(object)){
 
            myTasks.splice(myTasks.indexOf(object), 1)
 
            localStorage.setItem('tasks', JSON.stringify(myTasks))
+           
         }
         else{
             console.log('Not FOund')
@@ -113,13 +141,20 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
             object.TaskDescription = `${taskDescriptionInputEdit.value}`
 
             object.TaskDate = `${taskDateInputEdit.value}`
-
         
             taskTitle.innerHTML = `Task Name: ${object.TaskName}`
             taskDescription.innerHTML = `Task Description: ${object.TaskDescription}`
             taskDate.innerHTML = `Task Due: ${format(new Date(`'${object.TaskDate}'`), 'MMMM do yyyy')}`
 
+            upcomingTitle.innerHTML = `Task Name: ${object.TaskName}`
+            upcomingDescription.innerHTML = `Task Description: ${object.TaskDescription}`
+            upcomingDate.innerHTML = `Task Due: ${format(new Date(`'${object.TaskDate}'`), 'MMMM do yyyy')}`
+
+
             dateControl(todaysDate, object.TaskDate, storeTaskElements)
+
+            dateControl(todaysDate, dateInputed, storeUpcoming)
+
 
             localStorage.setItem('tasks', JSON.stringify(myTasks))
 
@@ -129,5 +164,16 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
         userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, closeButtonEdit)
         userInput.append(userInputDivEdit)
     }
+
 }
 
+export function completeTask(object){
+
+    completed.push(object)
+
+    localStorage.setItem('complete', JSON.stringify(completed))
+
+
+}
+
+// Pushing the object to completed and moving that element

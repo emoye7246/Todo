@@ -13,12 +13,19 @@ let Home = document.getElementById('Home')
 let addProject = document.getElementById('addProject')
 let projects = document.getElementById('projects')
 let projectContent = document.getElementById('projectContent')
+let CompletedTasks = document.getElementById('CompletedTasks')
+let Completed = document.getElementById('Completed')
+let UpcomingTasks = document.getElementById('UpcomingTasks')
+let Upcoming = document.getElementById('Upcoming')
+
 
 addTask.addEventListener('click', () => {
 
     Welcome.innerHTML = 'Your Task'
     taskContent.style.display = 'flex'
     projectContent.style.display = 'none'
+    CompletedTasks.style.display = 'none'
+    UpcomingTasks.style.display = 'none'
     new TaskManager().getTaskInfo()
 
 })
@@ -28,6 +35,10 @@ Home.addEventListener('click', () => {
     Welcome.innerHTML = 'Your Tasks'
     taskContent.style.display = 'flex'
     projectContent.style.display = 'none'
+    CompletedTasks.style.display = 'none'
+    UpcomingTasks.style.display = 'none'
+
+
 
 
 
@@ -37,6 +48,8 @@ addProject.addEventListener('click', () => {
 
     new ProjectManager().getProjectInfo()
     Welcome.innerHTML = 'Your Projects'
+    UpcomingTasks.style.display = 'none'
+    CompletedTasks.style.display = 'none'
     taskContent.style.display = 'none'
     projectContent.style.display = 'flex'
 
@@ -46,11 +59,31 @@ addProject.addEventListener('click', () => {
 projects.addEventListener('click', () => {
 
     Welcome.innerHTML = 'Your Projects'
+    UpcomingTasks.style.display = 'none'
+    CompletedTasks.style.display = 'none'
     taskContent.style.display = 'none'
     projectContent.style.display = 'flex'
 
+})
 
+Upcoming.addEventListener('click', () => {
 
+    Welcome.innerHTML = 'Upcoming Tasks'
+
+    UpcomingTasks.style.display = 'flex'
+    CompletedTasks.style.display = 'none'
+    taskContent.style.display = 'none'
+    projectContent.style.display = 'none'
+
+})
+
+Completed.addEventListener('click', () => {
+
+    Welcome.innerHTML = 'Completed Tasks'
+    CompletedTasks.style.display = 'flex'
+    taskContent.style.display = 'none'
+    projectContent.style.display = 'none'
+    UpcomingTasks.style.display = 'none'
 
 })
 

@@ -3,6 +3,7 @@ import { createTaskDisplay } from "./newTask"
 
 let content = document.getElementById('content')
 export let myTasks = []
+export let completed = []
 
 
 export class TaskManager {
