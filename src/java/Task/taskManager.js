@@ -1,9 +1,12 @@
 import { createTaskDisplay } from "./newTask"
-
+import { completedTaskDisplay } from "./newTask"
 
 let content = document.getElementById('content')
 export let myTasks = []
-export let completed = []
+export let completed = [
+
+
+]
 
 
 export class TaskManager {
@@ -122,6 +125,17 @@ export class TaskManager {
 
            })
         }
+
+        loadCompleted(){
+
+            let completed = JSON.parse(localStorage.getItem('complete')) || []
+
+            completed.forEach((element) => {
+
+                completedTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate)
+            })
+        }
 }
 // ok
 new TaskManager().loadMyTask()
+new TaskManager().loadCompleted()

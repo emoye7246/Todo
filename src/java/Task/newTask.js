@@ -43,7 +43,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     completedButton.addEventListener('click', () => {
 
-        completeTask(object)
+        completeTask(object, storeTaskElements, storeUpcoming)
     })
 
     let todaysDate = `'${new Date()}'`
@@ -167,13 +167,51 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
 }
 
-export function completeTask(object){
+function completeTask(object, removeDiv, removeUpcoming){
 
     completed.push(object)
 
     localStorage.setItem('complete', JSON.stringify(completed))
 
+    removeDiv.remove()
+
+    removeUpcoming.remove()
+
+    myTasks.splice(myTasks.indexOf(object), 1)
+
+    localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+    completedTaskDisplay(object.TaskName, object.TaskDescription, object.TaskDate)
 
 }
 
-// Pushing the object to completed and moving that element
+export function completedTaskDisplay(userTitle, userDescription, userDate){
+
+    let CompletedTasks = document.getElementById('CompletedTasks')
+
+    let storeComplete = document.createElement('div')
+    storeComplete.id = 'storeCompleted'
+
+    let completeTitle = document.createElement('div')
+    completeTitle.innerHTML = `${userTitle}`
+
+    let completeDescription = document.createElement('div')
+    completeDescription.innerHTML = `${userDescription}`
+
+    let completeDate = document.createElement('div')
+    completeDate.innerHTML = `${userDate}`
+
+    let congratsMessage = document.createElement('div')
+    congratsMessage.style.color = 'green'
+    congratsMessage.innerHTML = 'Congrats on completing this task lets keep this going '
+
+    storeComplete.append(completeTitle, completeDescription, completeDate, congratsMessage)
+    CompletedTasks.append(storeComplete)
+
+    
+}
+
+
+
+// Nice
+// Removed upcoming

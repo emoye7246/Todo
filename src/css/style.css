@@ -97,7 +97,7 @@ body{
   color: red;
 }
 
-#taskContent, #UpcomingTasks {
+#taskContent, #UpcomingTasks, #CompletedTasks {
 
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ body{
   justify-content: space-between;
 }
 
-#storeTaskElements, #storeUpcoming {
+#storeTaskElements, #storeUpcoming, #storeCompleted {
 
   display: flex;
   flex-direction: column;
