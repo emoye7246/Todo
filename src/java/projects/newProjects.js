@@ -1,5 +1,7 @@
 import { myProjects } from "./projectManager"
 import { myProjectsTasks } from "./task_Projects"
+import { completed } from "../Task/taskManager"
+
 
 let projectContent = document.getElementById('projectContent')
 
@@ -80,7 +82,7 @@ export class projectController{
 
         this.object.taskProjects.forEach((element) => {
 
-            myProjectsTasks(element.taskNames, element.taskDescriptions, element.taskDates, projectContent)
+            myProjectsTasks(element.taskNames, element.taskDescriptions, element.taskDates, projectContent, this.object, element)
         })
     }
 
@@ -136,7 +138,7 @@ export class projectController{
 
             localStorage.setItem('projects', JSON.stringify(myProjects))
 
-            myProjectsTasks(newTaskP.taskNames, newTaskP.taskDescriptions, newTaskP.taskDates, projectContent)
+            myProjectsTasks(newTaskP.taskNames, newTaskP.taskDescriptions, newTaskP.taskDates, projectContent, this.object, newTaskP)
 
             userInput.close()
         })
@@ -150,3 +152,4 @@ export class projectController{
 
 }
 
+// Passed
