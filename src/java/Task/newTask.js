@@ -60,7 +60,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     // Upcoming
 
-    let UpcomingTasks = document.getElementById('UpcomingTasks')
+    let UpcomingMyTask = document.getElementById('upComingMyTask')
 
     let storeUpcoming = document.createElement('div')
     storeUpcoming.id = 'storeUpcoming'
@@ -77,7 +77,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
     dateControl(todaysDate, dateInputed, storeUpcoming)
     
     storeUpcoming.append(upcomingTitle, upcomingDescription, upcomingDate)
-    UpcomingTasks.append(storeUpcoming)
+    UpcomingMyTask.append(storeUpcoming)
 
 
     function removeButtons(){
@@ -167,7 +167,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
 }
 
-function completeTask(object, removeDiv, removeUpcoming){
+export function completeTask(object, removeDiv, removeUpcoming){
 
     completed.push(object)
 

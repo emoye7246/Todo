@@ -22,21 +22,23 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
         let editButton = document.createElement('button')
         editButton.type = 'button'
         editButton.innerHTML = 'Edit'
+        editButton.addEventListener('click', editTask)
 
         let removeButton = document.createElement('button')
         removeButton.type = 'button'
         removeButton.innerHTML = 'Remove'
-
         removeButton.addEventListener('click', removeTask)
 
         let completedButton = document.createElement('button')
         completedButton.type = 'button'
         completedButton.innerHTML = 'Completed'
-
+        
 
         buttonSection.append(editButton, removeButton, completedButton)
         hold.append(placeTitle, placeDescription, placeDate, buttonSection)
         section.append(hold)
+
+
 
         function removeTask(){
 
@@ -46,6 +48,8 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                         hold.remove()
         
                         localStorage.setItem('projects', JSON.stringify(myProjects))
+
+                        upcomingInProjects(object)
                        }
                 else {
                         console.log('hello')
@@ -54,4 +58,89 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                 
         }
 
+        function editTask(){
+
+                let userInput = document.getElementById('userInput')
+                userInput.innerHTML = ' '
+        
+                userInput.showModal()
+                
+                let userInputDivEdit = document.createElement('div')
+                userInputDivEdit.id = 'userInputDiv'
+            
+                let taskTitleEdit = document.createElement('label')
+                taskTitleEdit.htmlFor = 'taskTitle'
+                taskTitleEdit.innerHTML = 'Task Title'
+            
+                let taskTitleInputEdit = document.createElement('input')
+                taskTitleInputEdit.id = 'taskTitle'
+            
+                let taskDescriptionEdit = document.createElement('label')
+                taskDescriptionEdit.innerHTML = 'Task Description'
+                taskDescriptionEdit.htmlFor = 'taskDescription'
+            
+                let taskDescriptionInputEdit = document.createElement('input')
+                taskDescriptionInputEdit.id = 'taskDescription'
+            
+                let taskDateEdit = document.createElement('label')
+                taskDateEdit.innerHTML = 'Due Date'
+                taskDateEdit.htmlFor = 'taskDate'
+            
+                let taskDateInputEdit = document.createElement('input')
+                taskDateInputEdit.type = 'date'
+                taskDateInputEdit.id = 'taskDate'
+            
+            
+                let closeButtonEdit = document.createElement('button')
+                closeButtonEdit.innerHTML = 'Close'
+
+                closeButtonEdit.addEventListener('click', () => {
+
+                        element.taskNames = `${taskTitleInputEdit.value}`
+                        element.taskDescriptions = `${taskDescriptionInputEdit.value}`
+                        element.taskDates = `${taskDateInputEdit.value}`
+
+                        placeTitle.innerHTML = `Task Title: ${element.taskNames}`
+                        placeDescription.innerHTML = `Task Description: ${element.taskDescriptions}`
+                        placeDate.innerHTML = `Task Date: ${element.taskDates}`
+
+                        localStorage.setItem('projects', JSON.stringify(myProjects))
+
+                       upcomingInProjects(object)
+
+                        userInput.close()
+                })
+
+                userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, closeButtonEdit)
+                userInput.append(userInputDivEdit)
+
+
+                
+        }
+
+        upcomingInProjects(object)
+
 }
+
+export function upcomingInProjects(obj){
+
+                let upComingMyProjects = document.getElementById('upComingMyProjects')
+                upComingMyProjects.innerHTML = ' '
+
+        obj.taskProjects.forEach((element) => {
+
+              
+                
+                let placeMe = document.createElement('div')
+                placeMe.innerHTML = `${element.taskNames}`
+        
+
+                upComingMyProjects.append(placeMe)
+
+        })
+
+
+
+
+}
+
