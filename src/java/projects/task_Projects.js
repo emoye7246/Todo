@@ -32,6 +32,11 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
         let completedButton = document.createElement('button')
         completedButton.type = 'button'
         completedButton.innerHTML = 'Completed'
+
+        completedButton.addEventListener('click', () => {
+
+                completedTask()
+        })
         
 
         buttonSection.append(editButton, removeButton, completedButton)
@@ -118,6 +123,22 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                 
         }
 
+        function completedTask(){
+
+                completed.push(element)
+
+               if(object.taskProjects.indexOf(element) == object.taskProjects.indexOf(element)){
+
+                object.taskProjects.splice(object.taskProjects.indexOf(element), 1)
+
+                localStorage.setItem('complete', JSON.stringify(completed))
+
+                localStorage.setItem('projects', JSON.stringify(myProjects))
+
+
+               }
+        }
+
         upcomingInProjects(object)
 
 }
@@ -129,18 +150,24 @@ export function upcomingInProjects(obj){
 
         obj.taskProjects.forEach((element) => {
 
-              
-                
-                let placeMe = document.createElement('div')
-                placeMe.innerHTML = `${element.taskNames}`
-        
+              let storeTaskContent = document.createElement('div')
+                storeTaskContent.id = 'storeTaskContent'
 
-                upComingMyProjects.append(placeMe)
+              let placeTitle = document.createElement('div')
+              placeTitle.innerHTML = `${element.taskNames}`
+
+              let placeDescription = document.createElement('div')
+              placeDescription.innerHTML = `${element.taskDescriptions}`
+
+              let placeDate = document.createElement('div')
+              placeDate.innerHTML = `${element.taskDates}`
+
+              let upComingMessage = document.createElement('div')
+              upComingMessage.innerHTML = `This task is located in the ${obj.projectName} Project`
+        
+                storeTaskContent.append(placeTitle, placeDescription, placeDate, upComingMessage)
+                upComingMyProjects.append(storeTaskContent)
 
         })
-
-
-
-
 }
 

@@ -1,6 +1,7 @@
 
 import { projectController } from "./newProjects"
 import { completed } from "../Task/taskManager"
+import { upcomingInProjects } from "./task_Projects"
 
 export let myProjects = []
 
@@ -100,6 +101,8 @@ export class ProjectManager{
             this.saveTask(element)
 
             new projectController(element).showProject()
+
+            upcomingInProjects(element)
 
 
         })
