@@ -1,12 +1,13 @@
 import { dateControl } from "../date";
 import { myTasks } from "./taskManager";
-import { completed } from "./taskManager";
 import { format} from "date-fns";
 
 export let taskContent = document.getElementById('taskContent')
 
 
-let content = document.getElementById('content')
+let completed = JSON.parse(localStorage.getItem('complete')) || []
+
+
 
 export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
@@ -210,8 +211,3 @@ export function completedTaskDisplay(userTitle, userDescription, userDate){
 
     
 }
-
-
-
-// Nice
-// Removed upcoming

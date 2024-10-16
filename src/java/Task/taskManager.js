@@ -135,7 +135,28 @@ export class TaskManager {
                 completedTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate)
             })
         }
+
+        loadTaskOnClick(){
+
+            let Home = document.getElementById('Home')
+
+            Home.addEventListener('click', () => {
+
+            let myTask = JSON.parse(localStorage.getItem('tasks')) || []
+
+            let taskContent = document.getElementById('taskContent')
+
+            taskContent.innerHTML = ' '
+
+
+                myTask.forEach((element) => {
+
+                    createTaskDisplay(element.TaskName, element.TaskDescription, element.TaskDate, element)
+                })
+            })
+        }
 }
 // ok
 new TaskManager().loadMyTask()
+new TaskManager().loadTaskOnClick()
 new TaskManager().loadCompleted()

@@ -1,7 +1,7 @@
 
 import { projectController } from "./newProjects"
-import { completed } from "../Task/taskManager"
 import { upcomingInProjects } from "./task_Projects"
+
 
 export let myProjects = []
 

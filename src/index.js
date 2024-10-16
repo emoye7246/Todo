@@ -94,5 +94,4 @@ let localStorageClear = document.getElementById("localStorageclear")
 localStorageClear.addEventListener('click', () => {
     localStorage.clear()
 })
-console.log(myTasks)
 

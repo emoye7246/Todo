@@ -1,5 +1,6 @@
-import { completed } from "../Task/taskManager"
 import { myProjects } from "./projectManager"
+
+let completed = JSON.parse(localStorage.getItem('complete')) || []
 
 export function myProjectsTasks(myTitle, myDescription, myDate, section, object, element){
 
@@ -127,20 +128,50 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
 
                 completed.push(element)
 
+                localStorage.setItem('complete', JSON.stringify(completed))
+
+                hold.remove()
+
                if(object.taskProjects.indexOf(element) == object.taskProjects.indexOf(element)){
 
                 object.taskProjects.splice(object.taskProjects.indexOf(element), 1)
 
-                localStorage.setItem('complete', JSON.stringify(completed))
-
                 localStorage.setItem('projects', JSON.stringify(myProjects))
 
+                upcomingInProjects(object)
 
                }
+
+               completedTaskDisplays(element.TaskName, element.TaskDescription, element.TaskDate)
         }
 
         upcomingInProjects(object)
 
+}
+
+function completedTaskDisplays(userTitle, userDescription, userDate){
+
+
+    let CompletedTasks = document.getElementById('CompletedTasks')
+
+    let storeComplete = document.createElement('div')
+    storeComplete.id = 'storeCompleted'
+
+    let completeTitle = document.createElement('div')
+    completeTitle.innerHTML = `${userTitle}`
+
+    let completeDescription = document.createElement('div')
+    completeDescription.innerHTML = `${userDescription}`
+
+    let completeDate = document.createElement('div')
+    completeDate.innerHTML = `${userDate}`
+
+    let congratsMessage = document.createElement('div')
+    congratsMessage.style.color = 'green'
+    congratsMessage.innerHTML = 'Congrats on completing this task lets keep this going '
+
+    storeComplete.append(completeTitle, completeDescription, completeDate, congratsMessage)
+    CompletedTasks.append(storeComplete)
 }
 
 export function upcomingInProjects(obj){
@@ -154,13 +185,13 @@ export function upcomingInProjects(obj){
                 storeTaskContent.id = 'storeTaskContent'
 
               let placeTitle = document.createElement('div')
-              placeTitle.innerHTML = `${element.taskNames}`
+              placeTitle.innerHTML = `${element.TaskName}`
 
               let placeDescription = document.createElement('div')
-              placeDescription.innerHTML = `${element.taskDescriptions}`
+              placeDescription.innerHTML = `${element.TaskDescription}`
 
               let placeDate = document.createElement('div')
-              placeDate.innerHTML = `${element.taskDates}`
+              placeDate.innerHTML = `${element.TaskDate}`
 
               let upComingMessage = document.createElement('div')
               upComingMessage.innerHTML = `This task is located in the ${obj.projectName} Project`

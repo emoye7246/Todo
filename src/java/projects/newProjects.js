@@ -1,9 +1,10 @@
 import { myProjects } from "./projectManager"
 import { myProjectsTasks } from "./task_Projects"
-import { completed } from "../Task/taskManager"
+
 
 
 let projectContent = document.getElementById('projectContent')
+
 
 
 export class projectController{
@@ -63,6 +64,11 @@ export class projectController{
         addExistingTask.type = 'button'
         addExistingTask.innerHTML = 'Add Existing Task'
 
+        addExistingTask.addEventListener('click', () => {
+
+            this.addExistingTasks()
+        })
+
         let removeProject = document.createElement('button')
         removeProject.type = 'button'
         removeProject.innerHTML = 'Remove Project'
@@ -82,7 +88,7 @@ export class projectController{
 
         this.object.taskProjects.forEach((element) => {
 
-            myProjectsTasks(element.taskNames, element.taskDescriptions, element.taskDates, projectContent, this.object, element)
+            myProjectsTasks(element.TaskName, element.TaskDescription, element.TaskDate, projectContent, this.object, element)
         })
     }
 
@@ -127,18 +133,19 @@ export class projectController{
 
             let newTaskP = {
                 
-                taskNames: `${taskTitleInput.value}`,
+                TaskName: `${taskTitleInput.value}`,
 
-                taskDescriptions: `${taskDescriptionInput.value}`,
+                TaskDescription: `${taskDescriptionInput.value}`,
 
-                taskDates: `${taskDateInput.value}`
+                TaskDate: `${taskDateInput.value}`
             }
 
+            // In order for it to work you must match the taskNames to the same titles as the task objects 
             this.object.taskProjects.push(newTaskP)
 
             localStorage.setItem('projects', JSON.stringify(myProjects))
 
-            myProjectsTasks(newTaskP.taskNames, newTaskP.taskDescriptions, newTaskP.taskDates, projectContent, this.object, newTaskP)
+            myProjectsTasks(newTaskP.TaskName, newTaskP.TaskDescription, newTaskP.TaskDate, projectContent, this.object, newTaskP)
 
             userInput.close()
         })
@@ -148,8 +155,86 @@ export class projectController{
 
     }
 
+    addExistingTasks(){
 
+        let myTasks = JSON.parse(localStorage.getItem('tasks')) || []
+
+        let userInput = document.getElementById('userInput')
+
+        userInput.innerHTML = ' '
+
+        userInput.showModal()
+
+            let headerTask = document.createElement('div')
+            headerTask.id = 'headerTask'
+
+        myTasks.forEach((element) => {
+
+            let myButtons = document.createElement('button')
+            myButtons.type = 'button'
+            myButtons.innerHTML = `${element.TaskName}`
+
+            myButtons.addEventListener('click', () => {
+
+                let move = document.getElementById('move')
+                move.innerHTML = ' '
+
+                move.showModal()
+
+                let header = document.createElement('div')
+                header.innerHTML = 'Are You sure you want add this task'
+
+                let yesButton = document.createElement('button')
+                yesButton.type = 'button'
+                yesButton.innerHTML = 'Yes'
+
+                yesButton.addEventListener('click', () => {
+
+                    myTasks.splice(myTasks.indexOf(element), 1)
+                    console.log(myTasks)
+
+                    localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+                    
+
+                    move.close()
+                    userInput.close()
+                    
+                })
+
+                let noButton = document.createElement('button')
+                noButton.type = 'button'
+                noButton.innerHTML = 'No'
+
+                noButton.addEventListener('click', () => {
+
+                    move.close()
+                })
+
+                move.append(header, yesButton, noButton)
+
+            })
+
+            headerTask.append(myButtons)
+        })
+
+        let closeButton = document.createElement('button')
+        closeButton.type = 'button'
+        closeButton.innerHTML = 'Close'
+
+        closeButton.addEventListener('click', () => {
+
+            userInput.close()
+        })
+
+        headerTask.append(closeButton)
+        userInput.append(headerTask)
+
+
+
+    }
 
 }
 
+// 
 // Passed

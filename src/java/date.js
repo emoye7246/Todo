@@ -15,7 +15,6 @@ else if (result >= 8){
 
 }
 
-console.log(result)
 }
 
 // Go work on some c# man come back later 
