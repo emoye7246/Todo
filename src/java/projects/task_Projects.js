@@ -3,8 +3,8 @@ import { myProjects } from "./projectManager"
 let completed = JSON.parse(localStorage.getItem('complete')) || []
 
 export function myProjectsTasks(myTitle, myDescription, myDate, section, object, element){
-
-
+        
+        
         let hold = document.createElement('div')
         hold.id = 'holdTask'
 
@@ -102,13 +102,13 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
 
                 closeButtonEdit.addEventListener('click', () => {
 
-                        element.taskNames = `${taskTitleInputEdit.value}`
-                        element.taskDescriptions = `${taskDescriptionInputEdit.value}`
-                        element.taskDates = `${taskDateInputEdit.value}`
+                        element.TaskName = `${taskTitleInputEdit.value}`
+                        element.TaskDescription = `${taskDescriptionInputEdit.value}`
+                        element.TaskDate = `${taskDateInputEdit.value}`
 
-                        placeTitle.innerHTML = `Task Title: ${element.taskNames}`
-                        placeDescription.innerHTML = `Task Description: ${element.taskDescriptions}`
-                        placeDate.innerHTML = `Task Date: ${element.taskDates}`
+                        placeTitle.innerHTML = `Task Title: ${element.TaskName}`
+                        placeDescription.innerHTML = `Task Description: ${element.TaskDescription}`
+                        placeDate.innerHTML = `Task Date: ${element.TaskDate}`
 
                         localStorage.setItem('projects', JSON.stringify(myProjects))
 

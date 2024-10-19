@@ -1,5 +1,5 @@
-import { myProjects } from "./projectManager"
 import { myProjectsTasks } from "./task_Projects"
+import { myProjects } from "./projectManager"
 
 
 
@@ -14,24 +14,27 @@ export class projectController{
         this.object = object
     }
 
-    showProject(){
+    showProject(object){
 
         let project = document.getElementById('projects')
 
+        let placeBoxes = document.getElementById('placeBoxes')
+
         let showProjectDiv = document.createElement('div')
         showProjectDiv.id = 'showProjectDiv'
-        showProjectDiv.innerHTML = `${this.object.projectName}`
+        showProjectDiv.innerHTML = `${object.projectName}`
 
         showProjectDiv.addEventListener('click', () => {
 
-            this.displayProject()
+            this.displayProject(object.projectName, object.projectDescriptionName)
         })
 
-        project.append(showProjectDiv)
+        placeBoxes.append(showProjectDiv)
+
+        
     }
 
-    displayProject(){
-
+    displayProject(title, description){
 
 
         projectContent.style.display = 'flex'
@@ -42,10 +45,10 @@ export class projectController{
         myProjectsDisplay.id = 'myProjectsDisplay'
 
         let projectTitle = document.createElement('div')
-        projectTitle.innerHTML = `<b>Project Name: </b> ${this.object.projectName}`
+        projectTitle.innerHTML = `<b>Project Name: </b> ${title}`
 
         let projectDescription = document.createElement('div')
-        projectDescription.innerHTML = `<b>Project Description: </b>${this.object.projectDescriptionName}`
+        projectDescription.innerHTML = `<b>Project Description: </b>${description}`
 
 
         let buttonSection = document.createElement('div')
@@ -73,6 +76,24 @@ export class projectController{
         removeProject.type = 'button'
         removeProject.innerHTML = 'Remove Project'
 
+        removeProject.addEventListener('click', () => {
+
+           projectContent.innerHTML = ' '
+
+
+           let placeBoxes = document.getElementById('placeBoxes')
+           placeBoxes.innerHTML = ' '
+
+           myProjects.splice(myProjects.indexOf(this.object), 1)
+
+           myProjects.forEach((element) => {
+
+            this.showProject(element)
+           })
+           
+
+        })
+
 
         buttonSection.append(addNewTask, addExistingTask, removeProject)
         myProjectsDisplay.append(projectTitle, projectDescription, buttonSection)
@@ -93,6 +114,8 @@ export class projectController{
     }
 
     createTheTask(){
+
+
 
         let userInput = document.getElementById('userInput')
         userInput.innerHTML = ''
@@ -137,7 +160,9 @@ export class projectController{
 
                 TaskDescription: `${taskDescriptionInput.value}`,
 
-                TaskDate: `${taskDateInput.value}`
+                TaskDate: `${taskDateInput.value}`, 
+
+                id: Math.random()
             }
 
             // In order for it to work you must match the taskNames to the same titles as the task objects 
@@ -191,11 +216,15 @@ export class projectController{
                 yesButton.addEventListener('click', () => {
 
                     myTasks.splice(myTasks.indexOf(element), 1)
-                    console.log(myTasks)
-
+                    
                     localStorage.setItem('tasks', JSON.stringify(myTasks))
 
-                    
+                    this.object.taskProjects.push(element)
+                   
+                    localStorage.setItem('projects', JSON.stringify(myProjects))
+
+
+                    this.displayProject(this.object.projectName, this.object.projectDescriptionName)
 
                     move.close()
                     userInput.close()

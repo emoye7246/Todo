@@ -27,7 +27,6 @@ export class ProjectManager{
         let projectDiv = document.createElement('div')
         projectDiv.id = 'projectDiv'
 
-
         let projectTitle = document.createElement('label')
         projectTitle.innerHTML = 'Project Title:'
         projectTitle.htmlFor = 'projectTitle'
@@ -80,7 +79,7 @@ export class ProjectManager{
 
         this.saveTask(myProjectObject)
 
-        new projectController(myProjectObject).showProject()
+        new projectController(myProjectObject).showProject(myProjectObject)
 
 
     }
@@ -100,7 +99,7 @@ export class ProjectManager{
 
             this.saveTask(element)
 
-            new projectController(element).showProject()
+            new projectController(element).showProject(element)
 
             upcomingInProjects(element)
 
