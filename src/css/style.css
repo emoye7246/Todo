@@ -109,7 +109,7 @@ body{
   justify-content: space-between;
 }
 
-#storeTaskElements, #storeUpcoming, #storeCompleted, #storeTaskContent {
+#storeTaskElements, #storeUpcoming, #storeCompleted, #storeTaskContent, #storeMyTaskUpcoming {
 
   display: flex;
   flex-direction: column;

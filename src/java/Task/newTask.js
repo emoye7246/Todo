@@ -9,6 +9,7 @@ let completed = JSON.parse(localStorage.getItem('complete')) || []
 
 
 
+
 export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     taskContent.style.display = 'flex'
@@ -44,7 +45,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
 
     completedButton.addEventListener('click', () => {
 
-        completeTask(object, storeTaskElements, storeUpcoming)
+        completeTask(object, storeTaskElements)
     })
 
     let todaysDate = `'${new Date()}'`
@@ -59,38 +60,19 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
     taskContent.append(storeTaskElements)
 
 
-    // Upcoming
-
-    let UpcomingMyTask = document.getElementById('upComingMyTask')
-
-    let storeUpcoming = document.createElement('div')
-    storeUpcoming.id = 'storeUpcoming'
     
-    let upcomingTitle = document.createElement('div')
-    upcomingTitle.innerHTML = `Task Name: ${userTitle}`
-    
-    let upcomingDescription = document.createElement('div')
-    upcomingDescription.innerHTML = `Task Description: ${userDescription}`
-    
-    let upcomingDate = document.createElement('div')
-    upcomingDate.innerHTML = `Task Due: ${format(new Date(`'${userDate}'`), 'MMMM do yyyy')}`
-
-    dateControl(todaysDate, dateInputed, storeUpcoming)
-    
-    storeUpcoming.append(upcomingTitle, upcomingDescription, upcomingDate)
-    UpcomingMyTask.append(storeUpcoming)
-
 
     function removeButtons(){
 
         storeTaskElements.remove()
-        storeUpcoming.remove()
 
         if(myTasks.indexOf(object) == myTasks.indexOf(object)){
 
            myTasks.splice(myTasks.indexOf(object), 1)
 
            localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+           upcomingMyTask()
            
         }
         else{
@@ -147,28 +129,28 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
             taskDescription.innerHTML = `Task Description: ${object.TaskDescription}`
             taskDate.innerHTML = `Task Due: ${format(new Date(`'${object.TaskDate}'`), 'MMMM do yyyy')}`
 
-            upcomingTitle.innerHTML = `Task Name: ${object.TaskName}`
-            upcomingDescription.innerHTML = `Task Description: ${object.TaskDescription}`
-            upcomingDate.innerHTML = `Task Due: ${format(new Date(`'${object.TaskDate}'`), 'MMMM do yyyy')}`
-
 
             dateControl(todaysDate, object.TaskDate, storeTaskElements)
 
-            dateControl(todaysDate, dateInputed, storeUpcoming)
 
 
             localStorage.setItem('tasks', JSON.stringify(myTasks))
+
+            upcomingMyTask()
 
             userInput.close()
         })
 
         userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, closeButtonEdit)
         userInput.append(userInputDivEdit)
+
     }
+
+    upcomingMyTask()
 
 }
 
-export function completeTask(object, removeDiv, removeUpcoming){
+export function completeTask(object, removeDiv){
 
     completed.push(object)
 
@@ -176,13 +158,14 @@ export function completeTask(object, removeDiv, removeUpcoming){
 
     removeDiv.remove()
 
-    removeUpcoming.remove()
 
     myTasks.splice(myTasks.indexOf(object), 1)
 
     localStorage.setItem('tasks', JSON.stringify(myTasks))
 
     completedTaskDisplay(object.TaskName, object.TaskDescription, object.TaskDate)
+
+    upcomingMyTask()
 
 }
 
@@ -210,4 +193,39 @@ export function completedTaskDisplay(userTitle, userDescription, userDate){
     CompletedTasks.append(storeComplete)
 
     
+}
+
+export function upcomingMyTask(){
+
+let taskArray = JSON.parse(localStorage.getItem('tasks')) || []
+
+
+    let upcomingMyTask = document.getElementById('upComingMyTask')
+    upcomingMyTask.innerHTML = ' '
+
+    taskArray.forEach((element) => {
+
+        let storeMyTaskUpcoming = document.createElement('div')
+        storeMyTaskUpcoming.id = 'storeMyTaskUpcoming'
+
+        let storeTaskContent = document.createElement('div')
+        storeTaskContent.id = 'storeTaskContent'
+
+      let placeTitle = document.createElement('div')
+      placeTitle.innerHTML = `Task Name: ${element.TaskName}`
+
+      let placeDescription = document.createElement('div')
+      placeDescription.innerHTML = `Task Description: ${element.TaskDescription}`
+
+      let placeDate = document.createElement('div')
+      placeDate.innerHTML = `Task Due: ${format(new Date(`'${element.TaskDate}'`), 'MMMM do yyyy')}`
+
+
+        storeMyTaskUpcoming.append(placeTitle, placeDescription, placeDate)
+        upcomingMyTask.append(storeMyTaskUpcoming)
+    })
+
+    
+
+
 }

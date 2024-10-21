@@ -1,4 +1,6 @@
 import { myProjects } from "./projectManager"
+import { format } from "date-fns"
+import { dateControl } from "../date"
 
 let completed = JSON.parse(localStorage.getItem('complete')) || []
 
@@ -15,7 +17,7 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
         placeDescription.innerHTML = `Task Description: ${myDescription}`
 
         let placeDate = document.createElement('div')
-        placeDate.innerHTML = `Task Date: ${myDate}`
+        placeDate.innerHTML = `Task Due: ${format(new Date(`'${myDate}'`), 'MMMM do yyyy')}`
 
         let buttonSection = document.createElement('div')
         buttonSection.id = 'buttonSection'
@@ -38,6 +40,12 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
 
                 completedTask()
         })
+
+        let todaysDate = `'${new Date()}'`
+
+        let dateInputed = `'${myDate}'`
+
+        dateControl(todaysDate, dateInputed, hold)
         
 
         buttonSection.append(editButton, removeButton, completedButton)
@@ -108,11 +116,13 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
 
                         placeTitle.innerHTML = `Task Title: ${element.TaskName}`
                         placeDescription.innerHTML = `Task Description: ${element.TaskDescription}`
-                        placeDate.innerHTML = `Task Date: ${element.TaskDate}`
+                        placeDate.innerHTML = `Task Due: ${format(new Date(`'${element.TaskDate}'`), 'MMMM do yyyy')}`
 
                         localStorage.setItem('projects', JSON.stringify(myProjects))
 
                        upcomingInProjects(object)
+
+                       dateControl(todaysDate, element.TaskDate, hold)
 
                         userInput.close()
                 })
@@ -147,6 +157,8 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
 
         upcomingInProjects(object)
 
+
+
 }
 
 function completedTaskDisplays(userTitle, userDescription, userDate){
@@ -158,13 +170,13 @@ function completedTaskDisplays(userTitle, userDescription, userDate){
     storeComplete.id = 'storeCompleted'
 
     let completeTitle = document.createElement('div')
-    completeTitle.innerHTML = `${userTitle}`
+    completeTitle.innerHTML = `Task Name: ${userTitle}`
 
     let completeDescription = document.createElement('div')
-    completeDescription.innerHTML = `${userDescription}`
+    completeDescription.innerHTML = `Task Description: ${userDescription}`
 
     let completeDate = document.createElement('div')
-    completeDate.innerHTML = `${userDate}`
+    completeDate.innerHTML = `Task Due: ${format(new Date(`'${userDate}'`), 'MMMM do yyyy')}`
 
     let congratsMessage = document.createElement('div')
     congratsMessage.style.color = 'green'
@@ -185,13 +197,13 @@ export function upcomingInProjects(obj){
                 storeTaskContent.id = 'storeTaskContent'
 
               let placeTitle = document.createElement('div')
-              placeTitle.innerHTML = `${element.TaskName}`
+              placeTitle.innerHTML = `Task Name: ${element.TaskName}`
 
               let placeDescription = document.createElement('div')
-              placeDescription.innerHTML = `${element.TaskDescription}`
+              placeDescription.innerHTML = `Task Description: ${element.TaskDescription}`
 
               let placeDate = document.createElement('div')
-              placeDate.innerHTML = `${element.TaskDate}`
+              placeDate.innerHTML = `Task Due: ${format(new Date(`'${element.TaskDate}'`), 'MMMM do yyyy')}`
 
               let upComingMessage = document.createElement('div')
               upComingMessage.innerHTML = `This task is located in the ${obj.projectName} Project`
@@ -202,3 +214,4 @@ export function upcomingInProjects(obj){
         })
 }
 
+// Finish Remove Project

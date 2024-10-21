@@ -1,6 +1,7 @@
 
 import { projectController } from "./newProjects"
 import { upcomingInProjects } from "./task_Projects"
+import { upcomingMyTask } from "../Task/newTask"
 
 
 export let myProjects = []
@@ -50,6 +51,8 @@ export class ProjectManager{
             this.projectTitles = projectTitleInput.value
 
             this.projectDescriptions = projectDescriptionInput.value
+
+            upcomingMyTask()
              
             this.createMyProject()
             

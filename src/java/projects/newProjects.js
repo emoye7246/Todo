@@ -1,5 +1,6 @@
 import { myProjectsTasks } from "./task_Projects"
 import { myProjects } from "./projectManager"
+import { upcomingMyTask } from "../Task/newTask"
 
 
 
@@ -85,6 +86,8 @@ export class projectController{
            placeBoxes.innerHTML = ' '
 
            myProjects.splice(myProjects.indexOf(this.object), 1)
+
+           localStorage.setItem('projects', JSON.stringify(myProjects))
 
            myProjects.forEach((element) => {
 
@@ -225,6 +228,8 @@ export class projectController{
 
 
                     this.displayProject(this.object.projectName, this.object.projectDescriptionName)
+
+                    upcomingMyTask()
 
                     move.close()
                     userInput.close()
