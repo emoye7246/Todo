@@ -1,6 +1,7 @@
 import { myProjects } from "./projectManager"
 import { format } from "date-fns"
 import { dateControl } from "../date"
+import { completeNotification } from "../mechanics/space"
 
 let completed = JSON.parse(localStorage.getItem('complete')) || []
 
@@ -103,12 +104,35 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                 let taskDateInputEdit = document.createElement('input')
                 taskDateInputEdit.type = 'date'
                 taskDateInputEdit.id = 'taskDate'
+
+                let errorMessage = document.createElement('div')
+                errorMessage.style.display = 'none'
+                errorMessage.style.color = 'flex'
+                errorMessage.innerHTML = 'Please fill out all feilds'
             
             
                 let closeButtonEdit = document.createElement('button')
-                closeButtonEdit.innerHTML = 'Close'
+                closeButtonEdit.innerHTML = 'Done'
 
                 closeButtonEdit.addEventListener('click', () => {
+
+                        if(taskTitleInputEdit.value.trim() == ''){
+
+                                errorMessage.style.display = 'flex'
+                                return false
+                        }
+
+                        if(taskDescriptionInputEdit.value.trim() == ''){
+
+                                errorMessage.style.display = 'flex'
+                                return false
+                        }
+
+                        if(taskDateInputEdit.value.trim() == ''){
+
+                                errorMessage.style.display = 'flex'
+                                return false
+                        }
 
                         element.TaskName = `${taskTitleInputEdit.value}`
                         element.TaskDescription = `${taskDescriptionInputEdit.value}`
@@ -127,7 +151,7 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                         userInput.close()
                 })
 
-                userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, closeButtonEdit)
+                userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, errorMessage,  closeButtonEdit)
                 userInput.append(userInputDivEdit)
 
 
@@ -153,6 +177,8 @@ export function myProjectsTasks(myTitle, myDescription, myDate, section, object,
                }
 
                completedTaskDisplays(element.TaskName, element.TaskDescription, element.TaskDate)
+
+               completeNotification()
         }
 
         upcomingInProjects(object)

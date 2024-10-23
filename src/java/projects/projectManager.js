@@ -42,11 +42,29 @@ export class ProjectManager{
         let projectDescriptionInput = document.createElement('input')
         projectDescriptionInput.id = 'projectDescription'
 
+        let errorMessage = document.createElement('div')
+        errorMessage.style.display = 'none'
+        errorMessage.style.color = 'red'
+        errorMessage.innerHTML = 'Please fill out all feilds'
+
         let closeButton = document.createElement('button')
         closeButton.type = 'button'
         closeButton.innerHTML = 'Close'
 
         closeButton.addEventListener('click', () => {
+
+            if(projectTitleInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+
+            }
+
+            if(projectDescriptionInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+            }
 
             this.projectTitles = projectTitleInput.value
 
@@ -59,7 +77,7 @@ export class ProjectManager{
             userInput.close()
         })
 
-        projectDiv.append(projectTitle, projectTitleInput, projectDescription, projectDescriptionInput, closeButton)
+        projectDiv.append(projectTitle, projectTitleInput, projectDescription, projectDescriptionInput, errorMessage,  closeButton)
         userInput.append(projectDiv)
     }
 

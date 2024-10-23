@@ -1,6 +1,7 @@
 import { myProjectsTasks } from "./task_Projects"
 import { myProjects } from "./projectManager"
 import { upcomingMyTask } from "../Task/newTask"
+import { upcomingNotification } from "../mechanics/space"
 
 
 
@@ -149,13 +150,35 @@ export class projectController{
         let taskDateInput = document.createElement('input')
         taskDateInput.type = 'date'
         taskDateInput.id = 'taskDate'
+
+        let errorMessage = document.createElement('div')
+        errorMessage.style.display = 'none'
+        errorMessage.style.color = 'red'
+        errorMessage.innerHTML = 'Please fill out all feilds'
     
     
         let closeButton = document.createElement('button')
-        closeButton.innerHTML = 'Close'
+        closeButton.innerHTML = 'Done'
 
 
         closeButton.addEventListener('click', () => {
+
+            if(taskTitleInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+            }
+            if (taskDescriptionInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+
+            }
+            if(taskDateInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+            }
 
             let newTaskP = {
                 
@@ -175,10 +198,12 @@ export class projectController{
 
             myProjectsTasks(newTaskP.TaskName, newTaskP.TaskDescription, newTaskP.TaskDate, projectContent, this.object, newTaskP)
 
+            upcomingNotification()
+
             userInput.close()
         })
             
-        userInputDiv.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        userInputDiv.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, errorMessage, closeButton)
         userInput.append(userInputDiv)
 
     }

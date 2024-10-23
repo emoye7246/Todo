@@ -1,12 +1,10 @@
 import { createTaskDisplay } from "./newTask"
 import { completedTaskDisplay } from "./newTask"
+import { upcomingNotification } from "../mechanics/space"
 
 let content = document.getElementById('content')
 export let myTasks = []
-export let completed = [
-
-
-]
+export let completed = []
 
 
 export class TaskManager {
@@ -52,11 +50,34 @@ export class TaskManager {
         taskDateInput.type = 'date'
         taskDateInput.id = 'taskDate'
     
+
+        let errorMessage = document.createElement('div')
+        errorMessage.innerHTML = `Please fill out all fields`
+        errorMessage.style.color = 'red'
+        errorMessage.style.display = 'none'
     
         let closeButton = document.createElement('button')
-        closeButton.innerHTML = 'Close'
+        closeButton.innerHTML = 'Done'
     
         closeButton.addEventListener('click', () => {
+
+            if(taskDateInput.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+           }
+
+           if(taskDescriptionInput.value.trim() == ''){
+
+            errorMessage.style.display = 'flex'
+            return false
+           }
+
+           if(taskTitleInput.value.trim() == ''){
+
+            errorMessage.style.display = 'flex'
+            return false
+           }
     
            this.titleInput = taskTitleInput.value
     
@@ -75,7 +96,7 @@ export class TaskManager {
         })
         
     
-        userInputDiv.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, closeButton)
+        userInputDiv.append(taskTitle, taskTitleInput, taskDescription, taskDescriptionInput, taskDate, taskDateInput, errorMessage, closeButton)
         userInput.append(userInputDiv)
 
     
@@ -101,6 +122,8 @@ export class TaskManager {
             this.storeMyTask(createTask)
 
            createTaskDisplay(createTask.TaskName, createTask.TaskDescription, createTask.TaskDate, createTask)
+
+           upcomingNotification()
             
             
         }
@@ -160,3 +183,5 @@ export class TaskManager {
 new TaskManager().loadMyTask()
 new TaskManager().loadTaskOnClick()
 new TaskManager().loadCompleted()
+
+// If data is empty

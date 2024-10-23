@@ -139,7 +139,7 @@ body{
 }
 
 
-#userInputDiv, #projectDiv, #taskHolders {
+#userInputDiv, #projectDiv, #taskHolders, #hold {
 
   display: flex;
   flex-direction: column;
@@ -206,6 +206,48 @@ body{
 
 }
 
+/* Notification Control */
+
+#checkNotify{
+  display: flex;
+  flex-direction: row;
+}
+
+#CompletedNotify{
+
+  display: flex;
+  border: 1px solid red;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: red;
+  margin: -6px;
+}
+
+#checkComplete{
+  display: flex;
+  flex-direction: row;
+
+}
+
+#upcomingNotify{
+
+  display: flex;
+  border: 1px solid red;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: red;
+  display: flex;
+  border: 1px solid red;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: red;
+  margin: -6px;
+
+}
+
 
 /* CSS */
 button {
@@ -228,6 +270,12 @@ button {
 button:focus {
   box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
+}
+
+button:hover{
+
+  color: red;
+  cursor: pointer;
 }
 /* cool */
 

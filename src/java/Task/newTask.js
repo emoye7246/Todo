@@ -1,6 +1,7 @@
 import { dateControl } from "../date";
 import { myTasks } from "./taskManager";
 import { format} from "date-fns";
+import { completeNotification } from "../mechanics/space";
 
 export let taskContent = document.getElementById('taskContent')
 
@@ -112,12 +113,37 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
         let taskDateInputEdit = document.createElement('input')
         taskDateInputEdit.type = 'date'
         taskDateInputEdit.id = 'taskDate'
+
+        let errorMessage = document.createElement('div')
+        errorMessage.style.display = 'none'
+        errorMessage.style.color = 'red'
+        errorMessage.innerHTML = 'Please fill out all fields'
     
     
         let closeButtonEdit = document.createElement('button')
-        closeButtonEdit.innerHTML = 'Close'
+        closeButtonEdit.innerHTML = 'Done'
 
         closeButtonEdit.addEventListener('click', () => {
+
+
+            if(taskDateInputEdit.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+
+            }
+
+            if(taskTitleInputEdit.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+            }
+
+            if(taskDescriptionInputEdit.value.trim() == ''){
+
+                errorMessage.style.display = 'flex'
+                return false
+            }
 
             object.TaskName = `${taskTitleInputEdit.value}`
 
@@ -141,7 +167,7 @@ export function createTaskDisplay(userTitle, userDescription, userDate, object){
             userInput.close()
         })
 
-        userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, closeButtonEdit)
+        userInputDivEdit.append(taskTitleEdit, taskTitleInputEdit, taskDescriptionEdit, taskDescriptionInputEdit, taskDateEdit, taskDateInputEdit, errorMessage,  closeButtonEdit)
         userInput.append(userInputDivEdit)
 
     }
@@ -166,6 +192,8 @@ export function completeTask(object, removeDiv){
     completedTaskDisplay(object.TaskName, object.TaskDescription, object.TaskDate)
 
     upcomingMyTask()
+
+    completeNotification()
 
 }
 

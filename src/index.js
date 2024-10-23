@@ -2,10 +2,9 @@ import _ from 'lodash';
 import '/Users/elijahmoye/Desktop/todo/Todo/src/css/style.css'
 import { TaskManager } from './java/Task/taskManager';
 import { ProjectManager } from './java/projects/projectManager';
-import { myTasks } from './java/Task/taskManager';
 import { taskContent } from './java/Task/newTask';
+import { findUserName } from './java/mechanics/names';
 
-import { dateControl } from './java/date';
 
 let addTask = document.getElementById('addTask')
 let Welcome = document.getElementById('Welcome')
@@ -17,6 +16,10 @@ let CompletedTasks = document.getElementById('CompletedTasks')
 let Completed = document.getElementById('Completed')
 let UpcomingTasks = document.getElementById('UpcomingTasks')
 let Upcoming = document.getElementById('Upcoming')
+
+let CompletedNotify = document.getElementById('CompletedNotify')
+
+let upcomingNotify = document.getElementById('upcomingNotify')
 
 
 addTask.addEventListener('click', () => {
@@ -74,6 +77,7 @@ Upcoming.addEventListener('click', () => {
     CompletedTasks.style.display = 'none'
     taskContent.style.display = 'none'
     projectContent.style.display = 'none'
+    upcomingNotify.style.display = 'none'
 
 })
 
@@ -84,14 +88,8 @@ Completed.addEventListener('click', () => {
     taskContent.style.display = 'none'
     projectContent.style.display = 'none'
     UpcomingTasks.style.display = 'none'
+    CompletedNotify.style.display = 'none'
 
 })
 
-
-
-let localStorageClear = document.getElementById("localStorageclear")
-
-localStorageClear.addEventListener('click', () => {
-    localStorage.clear()
-})
-
+findUserName()
